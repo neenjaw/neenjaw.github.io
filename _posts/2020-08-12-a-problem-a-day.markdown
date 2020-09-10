@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A problem a day keeps the brain-rust at bay.
+title: "A problem a day keeps the brain-rust at bay."
 date: 2020-08-12 00:00:00 -0600
 categories: coding
 ---

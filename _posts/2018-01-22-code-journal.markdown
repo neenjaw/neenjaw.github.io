@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Code Journal
+title: "Code Journal"
 date: 2018-01-22 00:00:00 -0600
 categories: coding
 ---

@@ -1,5 +1,5 @@
 ---
-title: Learning to deploy on Heroku
+title: "Learning to deploy on Heroku"
 description: and other things
 layout: post
 date: 2018-04-11
