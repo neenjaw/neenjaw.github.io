@@ -33,7 +33,15 @@ layout: default
     <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
   </article>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+  <div class="PageNavigation">
+    {% if post.previous.url %}
+    <a class="prev" href="{{post.previous.url}}">&laquo; {{post.previous.title}}</a>
+    {% endif %}
+    {% if post.next.url %}
+    <a class="next" href="{{post.next.url}}">{{post.next.title}} &raquo;</a>
+    {% endif %}
+  </div>
+
   {%- endif -%}
 
 </div>
