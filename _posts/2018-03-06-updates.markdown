@@ -1,0 +1,98 @@
+---
+layout: post
+title: Updates
+date: 2018-03-06 00:00:00 -0600
+categories: coding
+---
+
+So much has happened in the past week here on the homefront (see: kids), that I don't feel like I have had to much accomplished. Been trying to slowly chip away at styling this page, and I have been making a few small changes for the better I think.
+
+Been trying to read a lot about this stuff, so that even if I am not actively working on it that I am continuing to learn. Some interesting articles this week:
+
+- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
+- [Python Course](https://python-course.eu/python3_course.php)
+- [Why Static Site Generators are Awesome](https://syntax.fm/?__s=txzaivrwwv4gjiindgsw&utm_source=drip&utm_medium=email&utm_campaign=React.js+sure+has+changed)
+- [Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [The Best UX is No User Interface at All](https://css-tricks.com/best-ux-no-user-interface/)
+- [How Do You Structure JavaScript? The Module Pattern Edition](https://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/)
+- [PostCSS](http://postcss.org/)
+- [Sequelize](http://docs.sequelizejs.com/)
+- [Mithril](https://mithril.js.org/)
+- [purecss.io](https://purecss.io/)
+- [Why I Quit Google to Work for Myself](https://mtlynch.io/why-i-quit-google/)
+- [Create an Arduino and Unity3D interactive experience with no latency !](https://medium.freecodecamp.org/you-can-now-create-an-arduino-and-unity3d-interactive-experience-without-latency-2d7388dcc0c)
+- [9 Reasons Your Site Should Be Static](https://www.netlify.com/blog/2016/05/18/9-reasons-your-site-should-be-static/)
+- [The Poor Man's Netcode](http://etodd.io/2018/02/20/poor-mans-netcode/)
+- [RealWorld Example apps](https://github.com/gothinkster/realworld/blob/master/README.md)
+- [Secure Coding: Understanding Input Validation](https://littlemaninmyhead.wordpress.com/2018/02/18/secure-coding-understanding-input-validation/)
+- [Code Review. 7 Mistakes You May Be Making](https://bulldogjob.com/news/310-code-review-7-mistakes-you-may-be-making)
+- [How I rented a nice place to live using Elixir and a Facebook Messenger chat bot](https://medium.com/@DFilipeS/how-i-rented-a-nice-place-to-live-using-elixir-and-a-facebook-messenger-chat-bot-836f79498c5c)
+
+Also, been doing a little python scripting to learn how to make use of it's really powerful text/file manipulations. For this site, I have probably 40 posts transferred over from a running google doc, which I pasted into a pretty arbitrary .md format. I used a bit of python code to reformat them all! Learned something new, and saved me a ton of really boring copy-editing work!
+
+```python
+import os
+import re
+
+p = re.compile('code-journal-([0-9]{4}-[0-9]{2}-[0-9]{2})\.md')
+
+for file in os.listdir('.'):
+    m = p.match(file)
+    os.rename(file, m.group(1)+'-code-journal.md')
+```
+
+```python
+import os
+import re
+import fileinput
+
+filename_re = re.compile('[0-9]{4}-[0-9]{2}-[0-9]{2}-code-journal\.md')
+title_re = re.compile('^title: Code Journal - ((Jan|Feb) ([0-9]{1,2}))$');
+
+for file in os.listdir('.'):
+    dstr = ''
+    month = ''
+    dnum = ''
+
+    file_already_fixed = False
+
+    if filename_re.match(file):
+        for line in fileinput.input(file, inplace=True):
+            line = line.rstrip()
+
+            # don't try and fix what ain't broke
+            if file_already_fixed:
+                print(line)
+                continue
+
+            if line.startswith('title:'):
+                m = title_re.match(line)
+
+                # if this regex doesn't match, then the file is already fixed
+                if not m:
+                    file_already_fixed = True
+                    print(line)
+                    continue
+
+                dstr = m.group(1)
+                month = m.group(2)
+                dnum = m.group(3)
+
+                print('title: Code Journal')
+
+            elif line.startswith('description:'):
+                print('description: ' + dstr)
+
+            elif line.startswith('# ' + dstr):
+                pass
+
+            else:
+                print(line)
+
+        fileinput.close()
+
+```
+
+It's just shocking to me how easy this all is in this language -- but it's probably liek this in any of the scripting text based languages. It reminds me a lot of just how powerful perl is for things, but perl being out of flavor and in an identity crisis, python is relatively easier to get into right now.
+
+I'd probably like to talk about perl a little bit later, as someone trying to get back into things, but I'll leave that for another day.

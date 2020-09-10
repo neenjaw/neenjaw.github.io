@@ -1,0 +1,27 @@
+---
+layout: post
+title: Update
+date: 2020-07-21 00:00:00 -0600
+categories: coding
+---
+
+## Curse of maintaining a blog
+
+It turns out you have to update it.
+
+Every time i open the repo that this static site is built from, i just see how many `npm audit` warning it has that I can't resolve at the moment. This site is built with the [metal smith static site generator](https://github.com/segmentio/metalsmith) and it is really nice to work with, but it seems like it isn't being maintained any more. So I might start experimenting with something newer to have it stay ahead of the trend. Gatsby or Jekyll seem like options off the top of my head. Anyway.
+
+## COVID
+
+COVID changed my whole year's plan around (like most people) so it's been a slower summer around here, aside from work. Stay-cationing and social-distancing has been our recipe for most of the summer and I don't see that changing much. Good things are that we've been reading with the kids lots, biking lots, running more, eating healthier. So there are some perks there.
+
+## OSS / Exercism.io
+
+It's been awesome over the last few months to see how my contributions to the upcoming version of [Exercism.io](https://exercism.io) are coming along. I've been able to contribute to the Elixir, Ruby, and Python tracks. Also building a visualization to view the current state of each exercise and the learning path as it is created (Built with Typescript, React, D3).
+
+## Other initiatives and memoranda
+
+- Slowly working through a couple fun GoLang things to learn how to consume REST-API endpoints (I'm using the pokemon API).
+- Looking at Kotlin from a distance, seems really interesting. Java has come a long way with Java 14, but Kotlin seems really neat. Being able to build upon the JVM is such a cool thing to do.
+- I created [a new github readme for my profile](https://github.com/neenjaw/neenjaw/blob/master/README.md), which is a really neat feature when you can use the GitHub Actions to generate it.
+- Playing around with generating SVG progammatically from data to create lossless badges. See the [neenjaw/neenjaw badge branch for my WIP](https://github.com/neenjaw/neenjaw/tree/badge)

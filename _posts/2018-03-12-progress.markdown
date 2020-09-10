@@ -1,0 +1,23 @@
+---
+layout: post
+title: Progress
+date: 2018-03-12 00:00:00 -0600
+categories: coding
+---
+
+See, the problem with learning is that you realize that you used to really suck, and now you don't. I say that half-joking, but if you peruse my github you can probably see a huge evolution in the coding style and the methodologies used to solve problems.
+
+Other than a sense of general progress, I don't often get slapped in the face by how hard I was making it on myself until I see things like the _ICU Shift Tracker_ that I started later last year. And boy... wow, is it ever a slap in the face. Basically, I've rebuilt the backend in the span of a few days, where as last time it took me weeks to get to a semi-usable and albeit broken api. Now, it accepts JSON requests, returns JSON responses and is actually testable and maintainable.
+
+Even now, starting the front end, having gone through most of the [Web Developer Bootcamp](https://www.udemy.com/the-web-developer-bootcamp/) I look at the HTML source to create a basic view, and it hurts to look at how hard I was making it on myself. Having done the javascript30 and flexbox guides from [Wes Bos](http://wesbos.com/) (THEY ARE FREE, IF YOU HAVE INTEREST, DO THEM.) i look at the javascript I wrote to have a 'working' and responsive interface and... wow... I have already started writing it so differently. So clean in comparison.
+
+---
+
+Really though, to be very serious for a second, I am very excited where this all might lead at some point. I like my nursing job, work with some of the best people in the world, but this web stuff is super interesting to me right now as it works really well to learn this all around the kiddos' schedule.
+
+Check it out though:
+
+- [ICU Shi*f*t Tracker](https://github.com/neenjaw/icu-shift-tracker)
+- [Shift Tracker](https://github.com/neenjaw/shift-tracker)
+
+Tell me if you can spot at least 10 differences...
