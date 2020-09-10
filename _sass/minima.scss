@@ -47,6 +47,50 @@ $on-laptop: 800px !default;
 
 // Import partials.
 @import "minima/base", "minima/layout", "minima/syntax-highlighting";
+@import url("https://gitcdn.xyz/repo/octoshrimpy/blokkfont/master/blokkfont.css");
+
+// Logo styles
+
+.logo__container {
+  display: flex;
+  align-items: center;
+}
+
+.logo__name {
+  display: block;
+  text-align: center;
+  font-family: system-ui;
+  color: hsl(204, 100%, 5%);
+  font-size: 40px;
+}
+
+.logo__card {
+  --startDeg: 0deg;
+  inline-size: 80px;
+  block-size: 80px;
+
+  color: white;
+  background: hsl(204, 100%, 5%);
+  border: 10px solid hsl(100, 100%, 60%);
+  border-image-slice: 1;
+
+  border-image-source: conic-gradient(
+    from var(--startDeg, 0deg),
+    hsl(100, 100%, 60%),
+    hsl(200, 100%, 60%),
+    hsl(100, 100%, 60%)
+  );
+
+  margin: 10px 10px 10px 0;
+  padding: 30px;
+  display: grid;
+  place-content: center;
+  box-sizing: border-box;
+  font-size: 50px;
+  font-family: system-ui;
+}
+
+// PageNavigation styles
 
 .PageNavigation {
   font-size: 14px;
