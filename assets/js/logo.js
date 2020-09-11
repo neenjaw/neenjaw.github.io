@@ -52,7 +52,7 @@ const Logo = ({ name }) => {
   return e(
     "div",
     {
-      className: "logo__container",
+      className: "logo__wrapper",
     },
     e(
       "div",
@@ -76,9 +76,11 @@ const Logo = ({ name }) => {
   );
 };
 
-const logoContainer = document.getElementById("logo-container");
-if (logoContainer) {
-  ReactDOM.render(React.createElement(Logo, null), logoContainer);
+const logoContainers = document.querySelectorAll(".logo-container");
+if (logoContainers) {
+  for (let logoContainer of logoContainers) {
+    ReactDOM.render(React.createElement(Logo, null), logoContainer);
+  }
 } else {
   console.log("No logo container");
 }
