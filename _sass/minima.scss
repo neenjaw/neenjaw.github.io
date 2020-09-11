@@ -66,6 +66,8 @@ $on-laptop: 800px !default;
 
 .logo__card {
   --startDeg: 0deg;
+  --startColor: hsl(100, 100%, 60%);
+  --endColor: hsl(200, 100%, 60%);
   inline-size: 80px;
   block-size: 80px;
 
@@ -76,9 +78,9 @@ $on-laptop: 800px !default;
 
   border-image-source: conic-gradient(
     from var(--startDeg, 0deg),
-    hsl(100, 100%, 60%),
-    hsl(200, 100%, 60%),
-    hsl(100, 100%, 60%)
+    var(--startColor, hsl(100, 100%, 60%)),
+    var(--endColor, hsl(200, 100%, 60%)),
+    var(--startColor, hsl(100, 100%, 60%))
   );
 
   margin: 10px 10px 10px 0;
