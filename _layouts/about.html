@@ -1,14 +1,18 @@
 ---
 layout: default
 ---
-<article class="post">
 
+<article class="post">
   <header class="post-header">
     <h1 class="post-title">{{ page.page_title | escape }}</h1>
   </header>
 
-  <div class="post-content">
-    {{ content }}
+  {% if page.image %}
+  <div class="about__photo-container">
+    <img src="{{ page.image }}" alt="{{ page.image_alt | default: "photo"}}"
+    class="about__photo">
   </div>
+  {% endif %}
 
+  <div class="post-content">{{ content }}</div>
 </article>

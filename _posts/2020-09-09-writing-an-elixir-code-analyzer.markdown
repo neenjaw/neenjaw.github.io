@@ -437,7 +437,7 @@ end
 
 We now have a system of interacting modules which compose themselves into an analyzer. An overview of the code is here:
 
-![Code Usage Diagram](assets/images/elixir-analyzer-code-diagram.png)
+![Code Usage Diagram](/assets/images/elixir-analyzer-code-diagram.png)
 
 (See the full source on GitHub: [`exercism/elixir-analyzer`](https://github.com/exercism/elixir-analyzer))
 

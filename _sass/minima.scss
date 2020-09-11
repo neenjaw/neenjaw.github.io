@@ -92,6 +92,17 @@ $on-laptop: 800px !default;
   font-family: system-ui;
 }
 
+// About styles
+
+.about__photo-container {
+  margin-bottom: 1em;
+}
+
+.about__photo {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.75);
+}
+
 // PageNavigation styles
 
 .PageNavigation {

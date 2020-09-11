@@ -4,6 +4,7 @@ title: about me
 page_title: "about me: Tim Austin"
 permalink: /about/
 image: /assets/images/me.png
+image_alt: "Me!"
 ---
 
 ### **my motto**
