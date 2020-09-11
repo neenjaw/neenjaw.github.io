@@ -3,7 +3,7 @@ layout: about
 title: about me
 page_title: "about me: Tim Austin"
 permalink: /about/
-image: /assets/images/me.png
+image: /assets/images/me.jpg
 image_alt: "Me!"
 ---
 
