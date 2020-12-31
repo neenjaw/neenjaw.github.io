@@ -37,9 +37,6 @@ class ConfettiRibbon {
   reset() {
     const x = Math.random() * this.parent.width
     const y = -1 * Math.random() * this.parent.height * 2
-
-    console.log({ x, w: this.parent.width })
-
     this.currPosition = new Vector2D(x, y)
     this.prevPosition = this.currPosition.clone()
     const [frontColor, backColor] = this.fetchColors()
