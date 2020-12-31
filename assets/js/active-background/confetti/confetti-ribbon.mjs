@@ -19,11 +19,9 @@ class ConfettiRibbon {
     thickness = 8.0,
     angle = Math.PI / 4,
     parent,
-    scale,
     fetchColors,
   }) {
     this.parent = parent
-    this.scale = scale
     this.fetchColors = fetchColors
     this.particleCount = particleCount
     this.particleMass = particleMass
@@ -39,6 +37,9 @@ class ConfettiRibbon {
   reset() {
     const x = Math.random() * this.parent.width
     const y = -1 * Math.random() * this.parent.height * 2
+
+    console.log({ x, w: this.parent.width })
+
     this.currPosition = new Vector2D(x, y)
     this.prevPosition = this.currPosition.clone()
     const [frontColor, backColor] = this.fetchColors()
@@ -133,27 +134,21 @@ class ConfettiRibbon {
 
   drawFirstParticle(context, particle, nextParticle, p0, p1) {
     context.beginPath()
-    context.moveTo(
-      particle.position.x * this.scale,
-      particle.position.y * this.scale
-    )
+    context.moveTo(particle.position.x, particle.position.y)
+    context.lineTo(nextParticle.position.x, nextParticle.position.y)
     context.lineTo(
-      nextParticle.position.x * this.scale,
-      nextParticle.position.y * this.scale
-    )
-    context.lineTo(
-      (nextParticle.position.x + p1.x) * 0.5 * this.scale,
-      (nextParticle.position.y + p1.y) * 0.5 * this.scale
+      (nextParticle.position.x + p1.x) * 0.5,
+      (nextParticle.position.y + p1.y) * 0.5
     )
     context.closePath()
     context.stroke()
     context.fill()
     context.beginPath()
-    context.moveTo(p1.x * this.scale, p1.y * this.scale)
-    context.lineTo(p0.x * this.scale, p0.y * this.scale)
+    context.moveTo(p1.x, p1.y)
+    context.lineTo(p0.x, p0.y)
     context.lineTo(
-      (nextParticle.position.x + p1.x) * 0.5 * this.scale,
-      (nextParticle.position.y + p1.y) * 0.5 * this.scale
+      (nextParticle.position.x + p1.x) * 0.5,
+      (nextParticle.position.y + p1.y) * 0.5
     )
     context.closePath()
     context.stroke()
@@ -162,27 +157,21 @@ class ConfettiRibbon {
 
   drawMiddleParticle(context, particle, nextParticle, p0, p1) {
     context.beginPath()
-    context.moveTo(
-      particle.position.x * this.scale,
-      particle.position.y * this.scale
-    )
+    context.moveTo(particle.position.x, particle.position.y)
+    context.lineTo(nextParticle.position.x, nextParticle.position.y)
     context.lineTo(
-      nextParticle.position.x * this.scale,
-      nextParticle.position.y * this.scale
-    )
-    context.lineTo(
-      (particle.position.x + p0.x) * 0.5 * this.scale,
-      (particle.position.y + p0.y) * 0.5 * this.scale
+      (particle.position.x + p0.x) * 0.5,
+      (particle.position.y + p0.y) * 0.5
     )
     context.closePath()
     context.stroke()
     context.fill()
     context.beginPath()
-    context.moveTo(p1.x * this.scale, p1.y * this.scale)
-    context.lineTo(p0.x * this.scale, p0.y * this.scale)
+    context.moveTo(p1.x, p1.y)
+    context.lineTo(p0.x, p0.y)
     context.lineTo(
-      (particle.position.x + p0.x) * 0.5 * this.scale,
-      (particle.position.y + p0.y) * 0.5 * this.scale
+      (particle.position.x + p0.x) * 0.5,
+      (particle.position.y + p0.y) * 0.5
     )
     context.closePath()
     context.stroke()
@@ -191,16 +180,10 @@ class ConfettiRibbon {
 
   drawLastParticle(context, particle, nextParticle, p0, p1) {
     context.beginPath()
-    context.moveTo(
-      particle.position.x * this.scale,
-      particle.position.y * this.scale
-    )
-    context.lineTo(
-      nextParticle.position.x * this.scale,
-      nextParticle.position.y * this.scale
-    )
-    context.lineTo(p1.x * this.scale, p1.y * this.scale)
-    context.lineTo(p0.x * this.scale, p0.y * this.scale)
+    context.moveTo(particle.position.x, particle.position.y)
+    context.lineTo(nextParticle.position.x, nextParticle.position.y)
+    context.lineTo(p1.x, p1.y)
+    context.lineTo(p0.x, p0.y)
     context.closePath()
     context.stroke()
     context.fill()

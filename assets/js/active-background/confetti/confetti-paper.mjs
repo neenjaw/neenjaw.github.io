@@ -14,7 +14,6 @@ const Y_VELOCITY_MINIMUM = 50
 class ConfettiPaper {
   constructor(config) {
     this.parent = config.parent
-    this.scale = config.scale
     this.fetchColors = config.fetchColors
     this.position = new Vector2D(
       Math.random() * this.parent.width,
@@ -68,8 +67,8 @@ class ConfettiPaper {
 
   computeCornerDrawPositions() {
     return this.corners.map(({ x, y }, i) => {
-      x = this.position.x / this.scale + x * this.size
-      y = this.position.y / this.scale + y * this.size * this.cosRotation
+      x = this.position.x + x * this.size
+      y = this.position.y + y * this.size * this.cosRotation
       return {
         x,
         y,

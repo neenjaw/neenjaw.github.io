@@ -29,7 +29,6 @@ class Confetti {
     this.confettiPapers = [...new Array(confettiPaperCount)].map(() => {
       return new ConfettiPaper({
         parent: this,
-        scale: this.ratio,
         fetchColors: fetchRandomColor,
       })
     })
@@ -38,7 +37,6 @@ class Confetti {
     this.confettiRibbons = [...new Array(confettiRibbonCount)].map(() => {
       return new ConfettiRibbon({
         parent: this,
-        scale: this.ratio,
         fetchColors: fetchRandomColor,
       })
     })

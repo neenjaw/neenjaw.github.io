@@ -15,8 +15,12 @@ export const ActiveBackground = ({ type = 'confetti', className } = {}) => {
     canvasRef.style.width = `${canvasRef.parentElement?.parentElement?.offsetWidth}px`
     canvasRef.style.top = `${canvasRef.parentElement?.parentElement?.offsetTop}px`
     canvasRef.style.left = `${canvasRef.parentElement?.parentElement?.offsetLeft}px`
-    canvasRef.height = canvasRef.parentElement?.parentElement?.offsetHeight ?? 0
-    canvasRef.width = canvasRef.parentElement?.parentElement?.offsetWidth ?? 0
+    canvasRef.height =
+      canvasRef.parentElement?.parentElement?.offsetHeight ??
+      0 * window.devicePixelRatio
+    canvasRef.width =
+      canvasRef.parentElement?.parentElement?.offsetWidth ??
+      0 * window.devicePixelRatio
     setUpdate({})
   }, [canvasRef, setUpdate]) // Set canvas to size and position of parent element
 
