@@ -22,6 +22,8 @@ body {
   background-color: #282c34;
   display: grid;
   place-items: center;
+
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .ab-parent {
@@ -32,4 +34,13 @@ body {
 
 .ab-parent h2 {
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.ab-parent section {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  padding: 0.5rem;
 }
