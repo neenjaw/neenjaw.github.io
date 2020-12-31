@@ -11,7 +11,7 @@ Here's a festive bit of code to celebrate the season (because with COVID, I doub
 
 <iframe src="/assets/confetti.html" title="Confetti!" style="width: 100%; height: 30vh; overflow: hidden; border: solid 3px #3e3e3e; border-radius: 5px;" scrolling="no"></iframe>
 
-> Finished result, an encapsulated react component than can be just "added" onto a [webpage](./assets/confetti.html)
+> Finished result, an encapsulated react component than can be just "added" onto a [webpage](/assets/confetti.html)
 
 So there were a couple things to sort out here to make the finished product:
 
