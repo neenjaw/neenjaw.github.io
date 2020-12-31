@@ -1,0 +1,464 @@
+---
+layout: post
+title: Simulations, Canvas, Confetti!
+date: 2020-12-30 19:42:55 -0600
+categories: react typescript legacy_code
+---
+
+Happy almost New Year!
+
+Here's a festive bit of code to celebrate the season (because with COVID, I doubt you've done much else to celebrate). I was shown a semi-realistic simulation of confetti paper and ribbons falling on [codepen.io](https://codepen.io/iprodev/pen/azpWBr), by [Hemn Chawroka](https://codepen.io/iprodev). Seeing how it was released in January 2015, I figured I would try to bring it up to 2020 standards with -- you guessed it -- modern ES2017+, TypeScript, and React!
+
+<iframe src="/assets/confetti.html" title="Confetti!" style="width: 100%; height: 30vh; overflow: hidden; border: solid 3px #3e3e3e; border-radius: 5px;" scrolling="no"></iframe>
+
+> Finished result, an encapsulated react component than can be just "added" onto a [webpage](./assets/confetti.html)
+
+So there were a couple things to sort out here to make the finished product:
+
+1. How to organize the code, and separate concerns
+   - React is really good at choosing when to draw (render) the `<canvas />` element.
+   - But react doesn't provide us many advantages when directly animating the canvas.
+2. Modernizing the code
+   - Maybe one thing (and maybe the **only** thing) 2020 has been good for is bringing ES modules to the browser.
+   - So taking the [script from codepen](https://codepen.io/iprodev/pen/azpWBr), how do we break it up and modernize it
+     - This has already been roughly done, as _Hemn Chawroka_ had organized parts of it into JS classes
+
+## Separating Animation and Drawing
+
+To steal a line from [this article on dzone.com](https://dzone.com/articles/techniques-for-animating-on-the-canvas-in-react) by the venerable [Phil Nash](https://twitter.com/philnash), my goal was to use react to manage the state of the view and then plain old javascript to manage the animation. I wanted to be able to simply drop a react component into a DOM tree, and have it just "run" without any tweaking:
+
+```tsx
+// It needs to just work when dropped in to an app:
+function App() {
+  return (
+    <div className="App">
+      <div className="notification rounded">
+        <ActiveBackground type={'confetti'} className={'rounded'} />
+        // Other content here should render "on top of" the active background
+      </div>
+    </div>
+  )
+}
+```
+
+### The ActiveBackground Component
+
+This is the main react component which composes it all together. It draws the canvas element where it should be placed in the DOM. Provides some styling to have it float behind its siblings (some other minor CSS required). It also makes use of a custom hook to use the non-standard [`ResizeObserver` API](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) to watch for parent element changes so that the canvas covers the parent element completely. I used the react `useEffect` hook to start and stop the animation (to prevent memory leaks):
+
+```tsx
+React.useEffect(() => {
+  if (!canvasRef) {
+    // If for some reason the canvas element doesn't exist in the DOM
+    return
+  }
+
+  let background: BackgroundType = null
+
+  switch (type) {
+    case 'confetti':
+      background = new Confetti(canvasRef, {
+        confettiPaperCount: 100,
+        scaleConfettiCount: true,
+      })
+      break
+
+    default:
+      throw new Error(`unknown active background ${type}`)
+  }
+
+  if (background) {
+    background.start()
+  }
+
+  return () => {
+    if (background) {
+      background.stop()
+    }
+  }
+}, [canvasRef, type, update])
+```
+
+So with that built it was then time to move on to porting over code from _Hemn_'s code.
+
+## Vectors, EulerMasses, Confetti Papers! Oh my!
+
+So if there is one thing that I really like about (most) functional languages (elixir, etc.) is that they provide immutable data types. So mutability can't creep in and cause a bug. _Hemn_'s solution makes use of a 2D vector class (called `Vector2D` for us), but I didn't like that the operations were all mutable. So I adapted the class to always return a new `Vector2D` instance to make it easy to work with, as there is lots of math to make this work.
+
+```typescript
+export class Vector2D {
+  x: number
+  y: number
+
+  constructor(x: number, y: number) {
+    this.x = x
+    this.y = y
+  }
+
+  // ... some static methods omitted for brevity
+
+  clone() {
+    return new Vector2D(this.x, this.y)
+  }
+
+  get length() {
+    return Math.sqrt(this.squareLength)
+  }
+
+  get squareLength() {
+    return this.x * this.x + this.y * this.y
+  }
+
+  add(vector: Vector2D) {
+    const clone = this.clone()
+    clone.x += vector.x
+    clone.y += vector.y
+
+    return clone
+  }
+
+  subtract(vector: Vector2D) {
+    const clone = this.clone()
+    clone.x -= vector.x
+    clone.y -= vector.y
+
+    return clone
+  }
+
+  // ... other instance methods omitted for brevity
+}
+```
+
+Pretty standard fare. With that, then we could create another class which we could then use to simulate [Euler's laws of motion](https://en.wikipedia.org/wiki/Euler%27s_laws_of_motion) with a `EulerMass` class:
+
+```typescript
+export class EulerMass {
+  position: Vector2D
+  mass: number
+  drag: number
+  force: Vector2D
+  velocity: Vector2D
+
+  constructor(x: number, y: number, mass: number, drag: number) {
+    // The instance starts at rest at the point {x, y}
+    this.position = new Vector2D(x, y)
+    this.mass = mass
+    this.drag = drag
+    this.force = new Vector2D(0, 0)
+    this.velocity = new Vector2D(0, 0)
+  }
+
+  addForce(v: Vector2D) {
+    this.force = this.force.add(v)
+  }
+
+  currentForce() {
+    const speed = this.velocity.length
+    const dragVelocity = this.velocity.multiply(this.drag * this.mass * speed)
+    return this.force.subtract(dragVelocity)
+  }
+
+  integrate(dt: number) {
+    const acceleration = this.currentForce().divide(this.mass).multiply(dt)
+    const deltaPosition = this.velocity.multiply(dt)
+    this.position = this.position.add(deltaPosition)
+    this.velocity = this.velocity.add(acceleration)
+    this.force = new Vector2D(0, 0)
+  }
+}
+```
+
+The `integrate` method is neat because it is just a programmatic way of expressing `Force = Mass x Acceleration` and `Velocity = Distance / Time` with some [drag force](<https://en.wikipedia.org/wiki/Drag_(physics)>) applied. These two classes then are further composed into each of the two objects to be drawn to the canvas: the `ConfettiPaper` and the `ConfettiRibbon`.
+
+## Confetti Papers
+
+The confetti papers are considerably simpler than the ribbon, since it is represented by a single point with some state, which then is drawn as a square.
+
+```typescript
+class ConfettiPaper {
+  // ... omitted TypeScript class property declaration for brevity
+
+  constructor(config: ConfettiPaperConfig) {
+    this.parent = config.parent
+    this.scale = config.scale
+    this.fetchColors = config.fetchColors
+
+    this.position = new Vector2D(
+      Math.random() * this.parent.width,
+      Math.random() * this.parent.height
+    )
+
+    this.cosRotation = 1.0
+    this.angle = Math.random() * DEG_360_IN_RAD
+    this.rotation = Math.random() * DEG_360_IN_RAD
+    this.rotationSpeed =
+      Math.random() * ROTATION_SPEED_VARIANCE + ROTATION_SPEED_MINIMUM
+
+    this.oscillationSpeed =
+      Math.random() * OSCILLATION_SPEED_VARIANCE + OSCILLATION_SPEED_MINIMUM
+
+    this.xVelocity = X_VELOCITY
+    this.yVelocity = Math.random() * Y_VELOCITY_VARIANCE + Y_VELOCITY_MINIMUM
+    this.time = Math.random()
+
+    this.corners = computeCorners(this.angle)
+
+    const [frontColor, backColor] = this.fetchColors()
+    this.frontColor = frontColor
+    this.backColor = backColor
+    this.size = 5.0
+  }
+  //to be continued
+```
+
+So now we declare a `ConfettiPaper` instance, which keeps track of its location, angle, rotation, velocity, and oscillation (which is what makes it appear as though it is falling on a breeze). The `cosRotation` property is interesting in use because it keeps track of how it appears to the viewer -- if its front of back is showing.
+
+So how do we actually animate this object? Well, we aren't guaranteed to trigger at fixed intervals in JavaScript, so we `tween` the state based on the `dt` [delta-time] (time since the last update). In some games, this is a really complex component of the rendering engine, because it can have a profound impact on how it is displayed to the user. [Have you ever played old PC games that were limited by the number of CPU cycles?](https://www.howtogeek.com/171945/why-do-old-game-run-way-too-fast-on-modern-computers/) Since modern hardware is much faster, there have been [lots of ways developed to write `tween`ing functions](https://gafferongames.com/post/fix_your_timestep/) to [balance different priorities](https://gameprogrammingpatterns.com/game-loop.html#how-do-you-control-gameplay-speed) (e.g. input responsiveness vs display state).
+
+For a confetti paper, we are just going to ignore the debate, because its paper! and we will just step the animation forward by however large the `dt` is for the update.
+
+```typescript
+  // contd
+  update(dt: number) {
+    this.time += dt
+    this.rotation += this.rotationSpeed * dt
+    this.cosRotation = Math.cos((this.rotation * Math.PI) / 180)
+
+    this.position.x +=
+      Math.cos(this.time * this.oscillationSpeed) * this.xVelocity * dt
+    this.position.y += this.yVelocity * dt
+
+    // Reset paper to the top of the screen if the paper goes off the screen
+    if (this.position.y > this.parent.height) {
+      this.position.x = Math.random() * this.parent.width
+      this.position.y = 0
+    }
+  }
+  // to be continued
+```
+
+To then draw the paper, we receive the `context` from the the context controller (the upcoming `Confetti` class) which we can then use to write imperative statements to draw our shape to the screen.
+
+```typescript
+  //contd
+  draw(context: CanvasRenderingContext2D) {
+    // If you recall, cos ranges from -1 to 1, so half the time, show the front, half the time show the back
+    if (this.cosRotation > 0) {
+      context.fillStyle = this.frontColor
+    } else {
+      context.fillStyle = this.backColor
+    }
+
+    const [firstCorner, ...remainingCorners] = this.computeCornerDrawPositions()
+    context.beginPath()
+    // start the shape with the first point
+    context.moveTo(firstCorner.x, firstCorner.y)
+    // make three more points, connecting the points with lines
+    remainingCorners.forEach(({ x, y }) => context.lineTo(x, y))
+    // finish the shape with a closing line
+    context.closePath()
+    context.fill()
+  }
+}
+```
+
+## Buckle up for Confetti Ribbons
+
+Now if you thought creating, updating, and drawing confetti papers was complex. 💀 Sorry! Confetti ribbons are much more complex! 🤯 So I'll try to boil it down (but there are still some parts which are a bit beyond me).
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+  <img src="./assets/images/fry.png" />
+  <blockquote>Not sure if this is making sense or if this just seems like it is making sense</blockquote>
+</div>
+
+So the ribbon is stored as an array (or list) of points, which represent a sort of "spine" of the ribbon. So when the ribbon moves, we move the first point, then update every following point based on the change resulting in what appears to be connected matter.
+
+```typescript
+export class ConfettiRibbon {
+
+  // Blah blah blah class property declarations
+
+  constructor({
+    // yadda yadda yadda, arguments to initialize the class
+  }: ConfettiRibbonConfig) {
+    // initializing class properties and so forth
+  }
+
+  update(dt: number) {
+    this.time += dt * this.oscillationSpeed
+    this.currPosition.x += Math.cos(this.time) * this.oscillationDistance * dt
+    this.currPosition.y += this.yVelocity * dt
+
+    const dx = this.prevPosition.x - this.currPosition.x
+    const dy = this.prevPosition.y - this.currPosition.y
+    const dDistance = Math.sqrt(dx * dx + dy * dy)
+
+    this.prevPosition = this.currPosition.clone()
+
+    // Update each particle's force based on the particle before it
+    this.particles[0].position = this.currPosition
+    for (let index = 1; index < this.particles.length; index += 1) {
+      const directionForce = Vector2D.sub(
+        this.particles[index - 1].position,
+        this.particles[index].position
+      )
+        .normalize()
+        .multiply((dDistance / dt) * this.velocityInherit)
+
+      this.particles[index].addForce(directionForce)
+    }
+
+    // integrate the forces, to find the new position
+    for (let index = 1; index < this.particles.length; index += 1) {
+      this.particles[index].integrate(dt)
+    }
+
+    // calculate final position
+    for (let index = 1; index < this.particles.length; index += 1) {
+      const rp2 = this.particles[index].position
+        .subtract(this.particles[index - 1].position)
+        .normalize()
+        .multiply(this.particleDistance)
+        .add(this.particles[index - 1].position)
+      this.particles[index].position = rp2
+    }
+
+    // if the ribbon has completely left the viewport, reset it
+    if (
+      this.currPosition.y >
+      this.parent.height + this.particleDistance * this.particleCount
+    ) {
+      this.reset()
+    }
+  }
+```
+
+Similarly for the `ConfettiPaper` the draw function steps through all of the points [particles], and draws issues imperative draw commands to the context to draw that segment.
+
+```typescript
+  draw(context: CanvasRenderingContext2D) {
+    for (let index = 0; index < this.particles.length - 1; index += 1) {
+      const particle = this.particles[index]
+      const nextParticle = this.particles[index + 1]
+
+      const offsetVector = new Vector2D(this.xOff, this.yOff)
+      const p0 = particle.position.add(offsetVector)
+      const p1 = nextParticle.position.add(offsetVector)
+
+      if (sideFacing(particle, nextParticle, p1) < 0) {
+        context.fillStyle = this.frontColor
+        context.strokeStyle = this.frontColor
+      } else {
+        context.fillStyle = this.backColor
+        context.strokeStyle = this.backColor
+      }
+
+      if (index === 0) {
+        this.drawFirstParticle(context, particle, nextParticle, p0, p1)
+      } else if (index === this.particles.length - 2) {
+        this.drawMiddleParticle(context, particle, nextParticle, p0, p1)
+      } else {
+        this.drawLastParticle(context, particle, nextParticle, p0, p1)
+      }
+    }
+  }
+}
+```
+
+## Putting it all together
+
+The `Confetti` class acts as the controller for this machination. When it is created it, creates all of the `ConfettiPaper` and `ConfettiRibbon` instances required for the animation. It doesn't immediately start though, it only starts when the `start` method is called. This sets in motion a function call to the `render` method using the `requestAnimationFrame` API which then the `render` function calls itself using `requestAnimationFrame` and itself as the callback function. Like `setTimeout`, `requestAnimationFrame` returns an identifier, so it can be cancelled by the `stop` method.
+
+```typescript
+class Confetti {
+  // Class property declarations...
+
+  animationFrameRequestId: number | null
+
+  constructor(canvas: HTMLCanvasElement, options: ConfettiOptions = {}) {
+    this.canvas = canvas
+    this.context = canvas.getContext('2d')
+
+    this.speed = options?.speed ?? SPEED
+    this.duration = options?.duration ?? 1.0 / this.speed
+
+    this.ratio = window.devicePixelRatio
+    this.width = canvas.offsetWidth * this.ratio
+    this.height = canvas.offsetHeight * this.ratio
+
+    let confettiPaperCount =
+      options?.confettiPaperCount ?? DEFAULT_CONFETTI_PAPERS
+
+    if (options?.scaleConfettiCount) {
+      confettiPaperCount = Math.round(confettiPaperCount / this.ratio)
+    }
+
+    this.confettiPapers = [...new Array(confettiPaperCount)].map(() => {
+      return new ConfettiPaper({
+        parent: this,
+        scale: this.ratio,
+        fetchColors: fetchRandomColor,
+      })
+    })
+
+    let confettiRibbonCount =
+      options?.confettiRibbonCount ?? DEFAULT_CONFETTI_RIBBONS
+
+    this.confettiRibbons = [...new Array(confettiRibbonCount)].map(() => {
+      return new ConfettiRibbon({
+        parent: this,
+        scale: this.ratio,
+        fetchColors: fetchRandomColor,
+      })
+    })
+
+    this.animationFrameRequestId = null
+  }
+```
+
+This is the meat and potatoes of the class, which can then be controlled externally by the react component when it is time to play the animation.
+
+```typescript
+  start() {
+    this.animationFrameRequestId = requestAnimationFrame(this.render.bind(this))
+  }
+
+  stop() {
+    if (this.animationFrameRequestId) {
+      cancelAnimationFrame(this.animationFrameRequestId)
+    }
+  }
+
+  render() {
+    if (!this.context) {
+      return
+    }
+
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
+
+    for (const confettiPaper of this.confettiPapers) {
+      confettiPaper.update(this.duration)
+      confettiPaper.draw(this.context)
+    }
+
+    for (const confettiRibbon of this.confettiRibbons) {
+      confettiRibbon.update(this.duration)
+      confettiRibbon.draw(this.context)
+    }
+
+    this.animationFrameRequestId = requestAnimationFrame(this.render.bind(this))
+  }
+}
+```
+
+So there you have it! A modern interpretation of a codepen classic! Please feel free to work through my [GitHub repo](https://github.com/neenjaw/react-active-background/tree/b3f50c8a75df0444ace5ece718c58c00f3f3777c) to look through the code at your own pace. If there is something to iterate on, or you have a question, drop me a line! It would be great to discuss!
+
+Happy holidays!
+
+Tim
+
+References:
+
+- [Hemn Chawroka's Confetti on Codepen](https://codepen.io/iprodev/pen/azpWBr)
+- [Phil Nash's article on DZone](https://dzone.com/articles/techniques-for-animating-on-the-canvas-in-react)
+- [Robert Nystrom's most excellent book on Game Programming Patterns](https://gameprogrammingpatterns.com/game-loop.html#how-do-you-control-gameplay-speed)
+- [Glenn Fiedler's lexicon on timestep functions](https://gafferongames.com/post/fix_your_timestep/)
