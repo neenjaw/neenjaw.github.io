@@ -25,7 +25,7 @@ So there were a couple things to sort out here to make the finished product:
 
 ## Separating Animation and Drawing
 
-To steal a line from [this article on dzone.com](https://dzone.com/articles/techniques-for-animating-on-the-canvas-in-react) by the venerable [Phil Nash](https://twitter.com/philnash), my goal was to use react to manage the state of the view and then plain old javascript to manage the animation. I wanted to be able to simply drop a react component into a DOM tree, and have it just "run" without any tweaking:
+To borrow from [Phil Nash's blog post](https://philna.sh/blog/2018/09/27/techniques-for-animating-on-the-canvas-in-react/), my goal was to use react to manage the state of the view and then plain old javascript to manage the animation. I wanted to be able to simply drop a react component into a DOM tree, and have it just "run" without any tweaking:
 
 ```tsx
 // It needs to just work when dropped in to an app:
@@ -459,6 +459,8 @@ Tim
 References:
 
 - [Hemn Chawroka's Confetti on Codepen](https://codepen.io/iprodev/pen/azpWBr)
-- [Phil Nash's article on DZone](https://dzone.com/articles/techniques-for-animating-on-the-canvas-in-react)
+- [Phil Nash's blog](https://philna.sh/blog/2018/09/27/techniques-for-animating-on-the-canvas-in-react/)
 - [Robert Nystrom's most excellent book on Game Programming Patterns](https://gameprogrammingpatterns.com/game-loop.html#how-do-you-control-gameplay-speed)
 - [Glenn Fiedler's lexicon on timestep functions](https://gafferongames.com/post/fix_your_timestep/)
+
+> Edit Jan 1, 2021: Changed link from Dzone to Phil Nash's personal blog
