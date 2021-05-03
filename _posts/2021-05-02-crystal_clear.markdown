@@ -154,13 +154,19 @@ person = Person.new("Ted")
 # Can't do this:
 
 if person.name
-  name.upcase
+  person.name.upcase
 end
 
 # Do this:
 
 name = person.name
 if name
+  name.upcase
+end
+
+# Or this:
+
+if name = person.name
   name.upcase
 end
 ```
