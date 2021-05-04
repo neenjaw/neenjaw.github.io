@@ -177,6 +177,6 @@ Overall, Crystal was a fun programming venture. I don't know if I will be using 
 
 [exercism]: https://www.exercism.io
 [crystal-string-upcase]: https://crystal-lang.org/api/1.0.0/String.html#upcase(options:Unicode::CaseOptions=:none):String-instance-method
-[crystal-test-runner]: https://github.com/neenjaw/crystal-test-runner
+[crystal-test-runner]: https://github.com/exercism/crystal-test-runner
 [elixir-test-runner]: https://github.com/exercism/elixir-test-runner
 [php-test-runner]: https://github.com/exercism/php-test-runner
