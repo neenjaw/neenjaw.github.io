@@ -1,10 +1,10 @@
 ---
 layout: about
 title: about me
-page_title: "about me: Tim Austin"
+page_title: 'about me: Tim Austin'
 permalink: /about/
 image: /assets/images/me.jpg
-image_alt: "Me!"
+image_alt: 'Me!'
 ---
 
 ### **my motto**
@@ -32,8 +32,10 @@ I regularly use (in alphabetical order):
 - Bash Scripts
 - Docker
 - Elixir
+- Flow
 - Github Actions (CI/CD)
 - Go
+- GraphQL
 - HTML/CSS/DOM
 - Java
 - JavaScript
@@ -50,7 +52,7 @@ I regularly use (in alphabetical order):
 
 > Windows or \*nix?
 
-Windows 10 and Ubuntu 20.04.
+Windows 10 and Ubuntu 20.04 for personal, MacOS professionally.
 
 > vim or emacs?
 
@@ -58,4 +60,4 @@ vim, but I've used emacs when playing around with [_common-lisp_'s _slime_](http
 
 > tabs or spaces
 
-I like the compactness of spaces, but there is a semantic use for tabs which I can appreciate.
+I like the compactness of spaces, but there is a semantic use for tabs which I can appreciate. But I am most happy when using an automated formatter like prettier.
