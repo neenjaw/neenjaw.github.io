@@ -2,9 +2,9 @@
 
 // Define defaults for each variable.
 
-$base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-  Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-  "Segoe UI Symbol" !default;
+$base-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol' !default;
 $base-font-size: 16px !default;
 $base-font-weight: 400 !default;
 $small-font-size: $base-font-size * 0.875 !default;
@@ -46,8 +46,45 @@ $on-laptop: 800px !default;
 }
 
 // Import partials.
-@import "minima/base", "minima/layout", "minima/syntax-highlighting";
-@import url("https://gitcdn.xyz/repo/octoshrimpy/blokkfont/master/blokkfont.css");
+@import 'minima/base', 'minima/layout', 'minima/syntax-highlighting';
+
+@font-face {
+  font-family: 'BLOKK';
+  src: url('https://cdn.rawgit.com/octoshrimpy/blokkfont/e0dd7ffa/font/BLOKKNeue-Regular.eot');
+  src: url('https://cdn.rawgit.com/octoshrimpy/blokkfont/e0dd7ffa/font/BLOKKNeue-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('https://cdn.rawgit.com/octoshrimpy/blokkfont/e0dd7ffa/font/BLOKKNeue-Regular.woff2')
+      format('woff2'),
+    url('https://cdn.rawgit.com/octoshrimpy/blokkfont/e0dd7ffa/font/BLOKKNeue-Regular.woff')
+      format('woff'),
+    url('https://cdn.rawgit.com/octoshrimpy/blokkfont/e0dd7ffa/font/BLOKKNeue-Regular.otf')
+      format('opentype'),
+    url('https://cdn.rawgit.com/octoshrimpy/blokkfont/e0dd7ffa/font/BLOKKNeue-Regular.ttf')
+      format('truetype'),
+    url('https://cdn.rawgit.com/octoshrimpy/blokkfont/e0dd7ffa/font/BLOKKNeue-Regular.svg#BLOKKRegular')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: 'BLOKK';
+    src: url('https://cdn.rawgit.com/octoshrimpy/blokkfont/e0dd7ffa/font/BLOKKNeue-Regular.svg')
+      format('svg');
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.is-blokk,
+.is-blokk
+  *:not([class*='fa-']):not([class*='mdi']):not([class*='oi']):not([class*='ion-']):not(.reset-blokk) {
+  font-family: 'BLOKK' !important;
+}
 
 // Logo styles
 
