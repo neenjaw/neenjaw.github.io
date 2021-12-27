@@ -25,6 +25,10 @@ We win when my **work** brings **value** to you.
 
 I have two bachelor of science degrees: one in computer science, one in nursing. I enjoy problem solving in the physical biology and tech domains.
 
+### **my work**
+
+Currently working at [7shifts](https://www.7shifts.com/) &mdash; solving interesting problems with talented and interesting people.
+
 ### **my tech stack**
 
 I regularly use (in alphabetical order):
