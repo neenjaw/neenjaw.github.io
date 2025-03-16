@@ -72,6 +72,6 @@ I think like most things tech, there isn't a single panacea to all problems, and
 
 The most important thing is communicating with the team about our thoughts/concerns on the code we write so that we can achieve our goals together.
 
----
-
+<!--
 > Interested to know more about 7shifts and the problems we are helping to solve with tech for the restaurant industry? We are hiring for a variety of in-person/hybrid/remote positions for anyone legally able to work in Canada. Come work with me! Check them out here: [Careers @ 7shifts](https://www.7shifts.com/careers)
+-->
