@@ -25,8 +25,8 @@
   {% endif %}
 
   <!-- Load our React component. -->
-  <script src="/assets/js/static/logo.js"></script>
-
+  <script src="{{ '/assets/js/static/logo.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/dist/bundle.js' | relative_url }}" async></script> </body>
 </body>
 
 </html>

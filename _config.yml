@@ -32,6 +32,8 @@ rss: "rss feed"
 theme: minima
 plugins:
   - jekyll-feed
+sass:
+  quiet_deps: true
 #
 # Exclude from processing.
 # The following items will not be processed, by default.
