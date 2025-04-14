@@ -5,7 +5,7 @@
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     <!-- <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a> -->
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
-      <div class="logo-container"></div>
+      <div data-preact-component="Logo" data-preact-props='{}'></div>
     </a>
 
     {%- if page_paths -%}

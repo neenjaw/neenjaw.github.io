@@ -15,18 +15,7 @@
 
   {%- include footer.html -%}
 
-  <!-- Load React. -->
-  {% if jekyll.environment == "development" %}
-  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  {% else %}
-  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-  {% endif %}
-
-  <!-- Load our React component. -->
-  <script src="{{ '/assets/js/static/logo.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/dist/bundle.js' | relative_url }}" async></script> </body>
+  <script type="module" src="{{ '/assets/js/dist/preact-components.es.js' | relative_url }}"></script> </body>
 </body>
 
 </html>
