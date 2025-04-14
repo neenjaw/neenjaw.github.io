@@ -23,7 +23,8 @@ We win when my **work** brings **value** to you.
 
 ### **my education**
 
-I have two bachelor of science degrees: one in computer science, one in nursing. I enjoy problem solving in the physical biology and tech domains.
+I have two bachelor of science degrees: one in computer science, one in nursing.
+I enjoy problem solving in all aspects of life.
 
 ### **my work**
 
@@ -31,37 +32,31 @@ Currently working at [7shifts](https://www.7shifts.com/) &mdash; solving interes
 
 ### **my tech stack**
 
-I regularly use (in alphabetical order):
+I regularly use:
 
-- Bash Scripts
-- Docker
-- Elixir
-- Flow
-- Github Actions (CI/CD)
-- Go
-- GraphQL
-- HTML/CSS/DOM
-- Java
-- JavaScript
-  - _+/- (p)react, D3_
-- NodeJS
-  - _express_
-- PHP
-  - _composer/laravel_
-- Ruby
-  - _jekyll/rails_
-- TypeScript
+- bash
+- javascript
+- ruby
+- php
+- html/css
+- typescript
+- docker
+- elixir
 
-### quick facts
+### **i like to hack on**
 
-> Windows or \*nix?
+- exercism.org
+- prolog
+- macos/linux
 
-Windows 10 and Ubuntu 20.04 for personal, MacOS professionally.
+### **current game**
 
-> vim or emacs?
+- balatro
 
-vim, but I've used emacs when playing around with [_common-lisp_'s _slime_](https://common-lisp.net/project/slime/) repl, and it was nice.
+### **in my spare time**
 
-> tabs or spaces
-
-I like the compactness of spaces, but there is a semantic use for tabs which I can appreciate. But I am most happy when using an automated formatter like prettier.
+- reading
+- podcasts
+- coaching soccer
+- hiking
+- skiing
