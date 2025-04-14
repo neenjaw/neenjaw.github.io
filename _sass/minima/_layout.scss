@@ -1,39 +1,35 @@
-@use "variables" as v;
-@use "mixins" as m;
-@use "base";
-
 /**
  * Site header
  */
 .site-header {
-  border-top: 5px solid v.$grey-color-dark;
-  border-bottom: 1px solid v.$grey-color-light;
-  min-height: v.$spacing-unit * 1.865;
+  border-top: 5px solid $grey-color-dark;
+  border-bottom: 1px solid $grey-color-light;
+  min-height: $spacing-unit * 1.865;
 
   // Positioning context for the mobile navigation icon
   position: relative;
 }
 
 .site-title {
-  @include m.relative-font-size(1.625);
+  @include relative-font-size(1.625);
   font-weight: 300;
-  line-height: v.$base-line-height * v.$base-font-size * 2.25;
+  line-height: $base-line-height * $base-font-size * 2.25;
   letter-spacing: -1px;
   margin-bottom: 0;
   float: left;
 
   &,
   &:visited {
-    color: v.$grey-color-dark;
+    color: $grey-color-dark;
   }
 }
 
 .site-nav {
   float: right;
-  line-height: v.$base-line-height * v.$base-font-size * 2.25;
+  line-height: $base-line-height * $base-font-size * 2.25;
 
   .nav-trigger {
-    display: none;
+      display: none;
   }
 
   .menu-icon {
@@ -41,8 +37,8 @@
   }
 
   .page-link {
-    color: v.$text-color;
-    line-height: v.$base-line-height;
+    color: $text-color;
+    line-height: $base-line-height;
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
@@ -50,12 +46,12 @@
     }
   }
 
-  @include m.media-query(v.$on-palm) {
+  @include media-query($on-palm) {
     position: absolute;
     top: 9px;
-    right: calc(v.$spacing-unit / 2);
-    background-color: v.$background-color;
-    border: 1px solid v.$grey-color-light;
+    right: $spacing-unit / 2;
+    background-color: $background-color;
+    border: 1px solid $grey-color-light;
     border-radius: 5px;
     text-align: right;
 
@@ -78,7 +74,7 @@
       text-align: center;
 
       > svg {
-        fill: v.$grey-color-dark;
+        fill: $grey-color-dark;
       }
     }
 
@@ -104,17 +100,19 @@
   }
 }
 
+
+
 /**
  * Site footer
  */
 .site-footer {
-  border-top: 1px solid v.$grey-color-light;
-  padding: v.$spacing-unit 0;
+  border-top: 1px solid $grey-color-light;
+  padding: $spacing-unit 0;
 }
 
 .footer-heading {
-  @include m.relative-font-size(1.125);
-  margin-bottom: calc(v.$spacing-unit / 2);
+  @include relative-font-size(1.125);
+  margin-bottom: $spacing-unit / 2;
 }
 
 .contact-list,
@@ -124,68 +122,70 @@
 }
 
 .footer-col-wrapper {
-  @include m.relative-font-size(0.9375);
-  color: v.$grey-color;
-  margin-left: calc(-1 * v.$spacing-unit / 2);
+  @include relative-font-size(0.9375);
+  color: $grey-color;
+  margin-left: -$spacing-unit / 2;
   @extend %clearfix;
 }
 
 .footer-col {
   float: left;
-  margin-bottom: calc(v.$spacing-unit / 2);
-  padding-left: calc(v.$spacing-unit / 2);
+  margin-bottom: $spacing-unit / 2;
+  padding-left: $spacing-unit / 2;
 }
 
 .footer-col-1 {
-  width: -webkit-calc(35% - (#{v.$spacing-unit} / 2));
-  width: calc(35% - (#{v.$spacing-unit} / 2));
+  width: -webkit-calc(35% - (#{$spacing-unit} / 2));
+  width:         calc(35% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-2 {
-  width: -webkit-calc(20% - (#{v.$spacing-unit} / 2));
-  width: calc(20% - (#{v.$spacing-unit} / 2));
+  width: -webkit-calc(20% - (#{$spacing-unit} / 2));
+  width:         calc(20% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-3 {
-  width: -webkit-calc(45% - (#{v.$spacing-unit} / 2));
-  width: calc(45% - (#{v.$spacing-unit} / 2));
+  width: -webkit-calc(45% - (#{$spacing-unit} / 2));
+  width:         calc(45% - (#{$spacing-unit} / 2));
 }
 
-@include m.media-query(v.$on-laptop) {
+@include media-query($on-laptop) {
   .footer-col-1,
   .footer-col-2 {
-    width: -webkit-calc(50% - (#{v.$spacing-unit} / 2));
-    width: calc(50% - (#{v.$spacing-unit} / 2));
+    width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+    width:         calc(50% - (#{$spacing-unit} / 2));
   }
 
   .footer-col-3 {
-    width: -webkit-calc(100% - (#{v.$spacing-unit} / 2));
-    width: calc(100% - (#{v.$spacing-unit} / 2));
+    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+    width:         calc(100% - (#{$spacing-unit} / 2));
   }
 }
 
-@include m.media-query(v.$on-palm) {
+@include media-query($on-palm) {
   .footer-col {
     float: none;
-    width: -webkit-calc(100% - (#{v.$spacing-unit} / 2));
-    width: calc(100% - (#{v.$spacing-unit} / 2));
+    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+    width:         calc(100% - (#{$spacing-unit} / 2));
   }
 }
+
+
 
 /**
  * Page content
  */
 .page-content {
-  padding: v.$spacing-unit 0;
+  padding: $spacing-unit 0;
   flex: 1;
 }
 
 .page-heading {
-  @include m.relative-font-size(2);
+  @include relative-font-size(2);
 }
 
 .post-list-heading {
-  @include m.relative-font-size(1.75);
+  @include relative-font-size(1.75);
 }
 
 .post-list {
@@ -193,61 +193,63 @@
   list-style: none;
 
   > li {
-    margin-bottom: v.$spacing-unit;
+    margin-bottom: $spacing-unit;
   }
 }
 
 .post-meta {
-  font-size: v.$small-font-size;
-  color: v.$grey-color;
+  font-size: $small-font-size;
+  color: $grey-color;
 }
 
 .post-link {
   display: block;
-  @include m.relative-font-size(1.5);
+  @include relative-font-size(1.5);
 }
+
+
 
 /**
  * Posts
  */
 .post-header {
-  margin-bottom: v.$spacing-unit;
+  margin-bottom: $spacing-unit;
 }
 
 .post-title {
-  @include m.relative-font-size(2.625);
+  @include relative-font-size(2.625);
   letter-spacing: -1px;
   line-height: 1;
 
-  @include m.media-query(v.$on-laptop) {
-    @include m.relative-font-size(2.25);
+  @include media-query($on-laptop) {
+    @include relative-font-size(2.25);
   }
 }
 
 .post-content {
-  margin-bottom: v.$spacing-unit;
+  margin-bottom: $spacing-unit;
 
   h2 {
-    @include m.relative-font-size(2);
+    @include relative-font-size(2);
 
-    @include m.media-query(v.$on-laptop) {
-      @include m.relative-font-size(1.75);
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.75);
     }
   }
 
   h3 {
-    @include m.relative-font-size(1.625);
+    @include relative-font-size(1.625);
 
-    @include m.media-query(v.$on-laptop) {
-      @include m.relative-font-size(1.375);
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.375);
     }
   }
 
   h4 {
-    @include m.relative-font-size(1.25);
+    @include relative-font-size(1.25);
 
-    @include m.media-query(v.$on-laptop) {
-      @include m.relative-font-size(1.125);
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.125);
     }
   }
 }
