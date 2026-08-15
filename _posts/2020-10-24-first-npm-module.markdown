@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: I am now published! (in NPM)
 date: 2020-10-24 11:00:57 -0600
 categories: javascript npm github rest-api security

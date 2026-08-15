@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: Beginning of the end (of COVID)
 date: 2020-12-13 21:02:47 -0600
 categories: COVID vaccine Canada

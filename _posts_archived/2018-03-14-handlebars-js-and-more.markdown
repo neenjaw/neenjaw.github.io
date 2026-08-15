@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: "Handlebars.js and more."
 date: 2018-03-14 00:00:00 -0600
 categories: coding

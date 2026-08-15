@@ -18,7 +18,7 @@ function main {
 
   new_post_content=(
     "---"
-    "layout: post"
+    "layout: essay"
     "title: ${title}"
     "date: ${current_date} ${current_time} -0600"
     "categories: "

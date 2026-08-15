@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: Advent of Code
 date: 2020-12-15 15:02:11 -0600
 categories: coding ruby elixir javascript

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: Look at my github activity!
 date: 2020-09-16 11:49:41 -0600
 categories: javascript wes-bos challenge github

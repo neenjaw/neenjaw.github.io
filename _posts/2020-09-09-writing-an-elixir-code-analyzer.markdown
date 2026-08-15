@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: "Writing an Elixir Code Analyzer"
 subtitle: "(with metaprogramming magic 🧙)"
 date: 2020-09-9 23:49:00 -0600

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: "What's new with neenjaw?"
 date: 2019-05-11 00:00:00 -0600
 categories: coding

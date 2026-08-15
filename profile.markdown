@@ -1,8 +1,8 @@
 ---
-layout: about
-title: about me
+layout: profile
+title: profile
 page_title: 'about me: Tim Austin'
-permalink: /about/
+permalink: /profile/
 image: /assets/images/me.jpg
 image_alt: 'Me!'
 ---

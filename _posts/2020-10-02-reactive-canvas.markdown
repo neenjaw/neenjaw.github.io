@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: React & HTML Canvas
 date: 2020-10-02 21:44:06 -0600
 categories: exercism react typescript canvas

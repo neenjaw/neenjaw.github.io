@@ -1,7 +1,7 @@
 ---
 title: "Learning to deploy on Heroku"
 description: and other things
-layout: post
+layout: essay
 date: 2018-04-11
 ---
 

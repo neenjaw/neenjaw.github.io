@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: Lessons Learned from Advent of Code
 subtitle: An occasionally painful education
 date: 2025-04-30 06:02:08 -0600
