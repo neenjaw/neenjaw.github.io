@@ -1,0 +1,65 @@
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+  padding: 22px var(--content-padding);
+  display: flex;
+  flex-flow: row;
+  place-content: center space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* Identity block */
+.site-identity {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.site-identity:hover {
+  text-decoration: none;
+}
+
+.site-signal {
+  background-color: var(--color-highlight);
+  border-radius: 10px;
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+.site-wordmark {
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  font-weight: 400;
+  letter-spacing: 0.8px;
+  line-height: 1em;
+  color: var(--color-fg);
+  white-space: pre;
+}
+
+/* Navigation */
+.site-nav {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-nav a {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: 1em;
+  color: var(--color-fg);
+  text-decoration: none;
+  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  white-space: pre;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--color-accent);
+}

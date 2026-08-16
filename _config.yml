@@ -1,13 +1,44 @@
 title: neenjaw.com
 email: tim@neenjaw.com
 description: >-
-  neenjaw.com
+  Personal notes, development threads, and essays by Tim Austin.
 baseurl: ""
 url: "https://neenjaw.com"
 github_username: neenjaw
 linkedin_username: timothyjaustin
 
 date_format: "%b %-d, %Y"
+
+header_pages:
+  - index.markdown
+  - essays.markdown
+  - devlogs.markdown
+  - profile.markdown
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:name/
+  devlogs:
+    output: true
+    permalink: /devlogs/:name/
+  essays:
+    output: true
+    permalink: /essays/:name/
+
+defaults:
+  - scope:
+      path: "_essays"
+    values:
+      layout: essay
+  - scope:
+      path: "_notes"
+    values:
+      layout: note
+  - scope:
+      path: "_devlogs"
+    values:
+      layout: devlog
 
 plugins:
   - jekyll-feed
@@ -19,3 +50,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - scripts
+  - IMPLEMENTATION_PLAN.md

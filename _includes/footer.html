@@ -1,13 +1,13 @@
-<footer class="site-footer">
-  <div class="wrapper">
-    <div>
-      {{ site.title | escape }}
-      {%- if site.email %} &middot; <a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif -%}
-    </div>
-    <div class="footer-links">
-      {%- if site.github_username -%}<a href="https://github.com/{{ site.github_username }}">github</a>{%- endif -%}
-      {%- if site.linkedin_username -%}<a href="https://www.linkedin.com/in/{{ site.linkedin_username }}">linkedin</a>{%- endif -%}
-      <a href="{{ '/feed.xml' | relative_url }}">rss</a>
-    </div>
+<footer class="site-footer" role="contentinfo">
+  <span class="footer-note">PERSONAL NOTES ON BUILDING SOFTWARE</span>
+
+  <div class="footer-links">
+    {%- if site.github_username -%}
+      <a href="https://github.com/{{ site.github_username }}" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" fill="currentColor" width="16" height="16">
+          <path d="M8 0C3.58 0 0 3.582 0 8c0 3.535 2.292 6.533 5.47 7.59.4.072.547-.172.547-.385 0-.19-.007-.693-.01-1.36-2.226.482-2.695-1.074-2.695-1.074-.364-.924-.888-1.17-.888-1.17-.725-.496.055-.486.055-.486.803.056 1.225.824 1.225.824.714 1.223 1.873.87 2.328.666.072-.517.278-.87.505-1.07-1.777-.2-3.644-.888-3.644-3.953 0-.873.31-1.586.823-2.146-.083-.202-.356-1.015.078-2.116 0 0 .672-.215 2.2.82.638-.178 1.323-.267 2.001-.269.678.002 1.364.091 2.002.269 1.526-1.036 2.197-.82 2.197-.82.435 1.101.162 1.914.079 2.116.513.56.822 1.273.822 2.146 0 3.073-1.873 3.749-3.653 3.947.287.246.543.735.543 1.48 0 1.07-.01 1.933-.01 2.195 0 .214.145.465.55.385C13.71 14.533 16 11.534 16 8c0-4.418-3.582-8-8-8z"/>
+        </svg>
+      </a>
+    {%- endif -%}
   </div>
 </footer>

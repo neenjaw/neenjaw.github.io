@@ -1,5 +1,5 @@
 ---
 layout: essay_index
-title: "essays"
+title: essays
 permalink: /essays/
 ---

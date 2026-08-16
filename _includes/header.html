@@ -1,20 +1,18 @@
 <header class="site-header" role="banner">
-  <div class="wrapper">
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+  <a class="site-identity" rel="author" href="{{ '/' | relative_url }}">
+    <span class="site-signal"></span>
+    <span class="site-wordmark">NEENJAW</span>
+  </a>
 
-    {%- assign default_paths = site.pages | map: "path" -%}
-    {%- assign page_paths = site.header_pages | default: default_paths -%}
-    {%- if page_paths -%}
-      <nav class="site-nav">
-        <div class="trigger">
-          {%- for path in page_paths -%}
-            {%- assign my_page = site.pages | where: "path", path | first -%}
-            {%- if my_page.title -%}
-              <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-      </nav>
-    {%- endif -%}
-  </div>
+  <nav class="site-nav" aria-label="Main navigation">
+    {%- for path in site.header_pages -%}
+      {%- assign my_page = site.pages | where: "path", path | first -%}
+      {%- if my_page.title -%}
+        <a href="{{ my_page.url | relative_url }}"
+           {% if page.url == my_page.url %}aria-current="page"{% endif %}>
+          {{ my_page.title | escape }}
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </nav>
 </header>

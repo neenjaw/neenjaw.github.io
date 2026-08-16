@@ -2,55 +2,60 @@
 layout: default
 ---
 
-<div class="home">
-  {%- if site.posts.size > 0 -%} {% assign post = site.posts.first %}
+<section class="intro">
+  <p class="intro-kicker">PERSONAL WEBSITE / LOG 001</p>
+  <h1 class="intro-title">Notes from the workbench.</h1>
+  <p class="intro-copy">I'm Tim Austin — a developer documenting decisions, experiments, and the occasional longer argument about software.</p>
 
-  <article
-    class="post h-entry"
-    itemscope
-    itemtype="http://schema.org/BlogPosting"
-  >
-    <header class="post-header">
-      <h1 class="post-title p-name" itemprop="name headline">
-        {{ post.title | escape }}
-      </h1>
-      <h2 class="post-sub-title p-name" itemprop="name headline">
-        {{ post.subtitle | escape }}
-      </h2>
-      <p class="post-meta">
-        <time
-          class="dt-published"
-          datetime="{{ page.date | date_to_xmlschema }}"
-          itemprop="datePublished"
-        >
-          {{ post.date | date: site.date_format }}
-        </time>
-        {%- if post.author -%} •
-        <span itemprop="author" itemscope itemtype="http://schema.org/Person"
-          ><span class="p-author h-card" itemprop="name"
-            >{{ post.author }}</span
-          ></span
-        >
-        {%- endif -%}
-      </p>
-    </header>
-
-    <div class="post-content e-content" itemprop="articleBody">
-      {{ post.content }}
+  <div class="publishing-legend">
+    <div class="legend-item">
+      <span class="legend-marker legend-marker--note"></span>
+      <span class="legend-label">NOTES / IN PROGRESS</span>
     </div>
+    <div class="legend-item">
+      <span class="legend-marker legend-marker--essay"></span>
+      <span class="legend-label">ESSAYS / CONSIDERED</span>
+    </div>
+  </div>
+</section>
 
-    <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-  </article>
-
-  <div class="PageNavigation">
-    {% if post.previous.url %}
-    <a class="prev" href="{{post.previous.url}}"
-      >&laquo; {{post.previous.title}}</a
-    >
-    {% endif %} {% if post.next.url %}
-    <a class="next" href="{{post.next.url}}">{{post.next.title}} &raquo;</a>
-    {% endif %}
+<section class="stream">
+  <div class="stream-heading">
+    <span class="stream-label">LATEST</span>
+    <span class="stream-count">01—04</span>
   </div>
 
-  {%- endif -%}
-</div>
+  <div class="stream-items">
+    {%- assign all_items = "" | split: "" -%}
+    {%- for note in site.notes -%}
+      {%- assign note_data = note | split: "|||" -%}
+      {%- assign all_items = all_items | push: note -%}
+    {%- endfor -%}
+    {%- for essay in site.essays -%}
+      {%- assign all_items = all_items | push: essay -%}
+    {%- endfor -%}
+
+    {%- assign sorted_items = all_items | sort: "date" | reverse -%}
+    {%- assign display_count = 0 -%}
+
+    {%- for item in sorted_items -%}
+      {%- if display_count >= 4 -%}{%- break -%}{%- endif -%}
+
+      {%- if item.collection == "notes" -%}
+        {%- include stream-item-note.html item=item -%}
+        {%- assign display_count = display_count | plus: 1 -%}
+      {%- elsif item.collection == "essays" -%}
+        {%- include stream-item-essay.html item=item -%}
+        {%- assign display_count = display_count | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <a class="stream-footer" href="{{ '/essays/' | relative_url }}">
+    <span class="stream-footer-label">READ THE ENTIRE STREAM</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 0 L14 0"/>
+      <path d="M0 0 L7 7 L0 14"/>
+    </svg>
+  </a>
+</section>

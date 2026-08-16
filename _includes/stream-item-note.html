@@ -1,0 +1,18 @@
+<div class="stream-item--note">
+  <span class="stream-item-date">{{ item.date | date: "%b %-d, %Y" }}</span>
+  <div class="stream-item-content">
+    <div class="stream-item-body">{{ item.content | strip_html | truncatewords: 50 }}</div>
+    {%- if item.devlog -%}
+      {%- assign devlog = site.devlogs | where: "slug", item.devlog | first -%}
+      {%- if devlog -%}
+        <span class="devlog-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+            <path d="M0 0 L10 0 L10 10"/>
+            <path d="M0 10 L10 0"/>
+          </svg>
+          <span class="devlog-badge-text">DEVLOG / {{ devlog.title | upcase }}</span>
+        </span>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>

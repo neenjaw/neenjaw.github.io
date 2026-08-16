@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<section class="devlog-index">
+  <h1 class="devlog-index-title">Devlogs</h1>
+
+  <div class="devlog-list">
+    {%- for devlog in site.devlogs -%}
+      <div class="devlog-list-item">
+        <span class="devlog-list-date">{{ devlog.date | date: "%b %-d, %Y" }}</span>
+        <div class="devlog-list-content">
+          <h2 class="devlog-list-title">
+            <a href="{{ devlog.url | relative_url }}">{{ devlog.title | escape }}</a>
+          </h2>
+          {%- if devlog.description -%}
+            <p class="devlog-list-description">{{ devlog.description | escape }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>

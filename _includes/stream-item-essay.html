@@ -1,0 +1,13 @@
+<a class="stream-item--essay" href="{{ item.url | relative_url }}">
+  <div class="stream-item-meta">
+    <span class="stream-item-kind">ESSAY / {{ item.date | date: "%m.%d.%y" }}</span>
+    <svg class="stream-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 0 L10 0 L10 10"/>
+      <path d="M0 10 L10 0"/>
+    </svg>
+  </div>
+  <h2 class="stream-item-title">{{ item.title | escape }}</h2>
+  {%- if item.subtitle -%}
+    <p class="stream-item-excerpt">{{ item.subtitle | escape }}</p>
+  {%- endif -%}
+</a>

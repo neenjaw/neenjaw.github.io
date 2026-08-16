@@ -1,0 +1,81 @@
+.intro {
+  max-width: var(--max-width);
+  width: 100%;
+  padding: var(--space-6xl) var(--content-padding) var(--space-5xl);
+  display: flex;
+  flex-flow: column;
+  gap: var(--space-xl);
+}
+
+.intro-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  letter-spacing: 0.4px;
+  line-height: 1.4em;
+  color: var(--color-muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.intro-title {
+  font-family: var(--font-body);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  line-height: 1.02em;
+  color: var(--color-fg);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.intro-copy {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.55em;
+  color: var(--color-fg);
+  max-width: 720px;
+  text-wrap: balance;
+}
+
+/* Publishing legend */
+.publishing-legend {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 0;
+  width: min-content;
+}
+
+.legend-item {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-marker {
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.legend-marker--note {
+  background-color: var(--color-highlight);
+}
+
+.legend-marker--essay {
+  background-color: var(--color-accent);
+}
+
+.legend-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.2px;
+  line-height: 1em;
+  color: var(--color-muted);
+  white-space: pre;
+}

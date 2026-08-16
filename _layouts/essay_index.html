@@ -2,28 +2,22 @@
 layout: default
 ---
 
-<div class="home">
-  {{ content }}
+<section class="essay-index">
+  <h1 class="essay-index-title">Essays</h1>
 
-  {%- if site.posts.size > 0 -%}
-  <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-  <ul class="post-list">
-    {%- for post in site.posts -%}
-    <li>
-      <span class="post-meta">{{ post.date | date: site.date_format }}</span>
-      <h3>
-        <a class="post-link" href="{{ post.url | relative_url }}">
-          {{ post.title | escape }}
-        </a>
-      </h3>
-      {%- if site.show_excerpts -%}
-      {{ post.excerpt }}
-      {%- endif -%}
-    </li>
+  <div class="essay-list">
+    {%- for essay in site.essays -%}
+      <div class="essay-list-item">
+        <span class="essay-list-date">{{ essay.date | date: "%b %-d, %Y" }}</span>
+        <div class="essay-list-content">
+          <h2 class="essay-list-title">
+            <a href="{{ essay.url | relative_url }}">{{ essay.title | escape }}</a>
+          </h2>
+          {%- if essay.subtitle -%}
+            <p class="essay-list-excerpt">{{ essay.subtitle | escape }}</p>
+          {%- endif -%}
+        </div>
+      </div>
     {%- endfor -%}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {%- endif -%}
-
-</div>
+  </div>
+</section>

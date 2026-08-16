@@ -2,17 +2,16 @@
 layout: default
 ---
 
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title">{{ page.page_title | escape }}</h1>
+<section class="profile">
+  <header class="profile-header">
+    <h1 class="profile-title">About Me: Tim Austin</h1>
   </header>
 
-  {% if page.image %}
-  <div class="about__photo-container">
-    <img src="{{ page.image }}" alt="{{ page.image_alt | default: "photo"}}"
-    class="about__photo">
-  </div>
-  {% endif %}
+  {%- if page.image -%}
+    <img class="profile-photo" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" />
+  {%- endif -%}
 
-  <div class="post-content">{{ content }}</div>
-</article>
+  <div class="profile-content">
+    {{ content }}
+  </div>
+</section>
