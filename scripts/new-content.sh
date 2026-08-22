@@ -7,10 +7,12 @@ ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 function main {
   if [[ "${1:-}" == "note" ]]; then
     create_note "${@:2}"
+  elif [[ "${1:-}" == "devlog" ]]; then
+    create_devlog "${@:2}"
   elif [[ "${1:-}" == "essay" ]]; then
     create_essay "${@:2}"
   else
-    die "USAGE: scripts/new-content.sh note [<devlog slug>] | essay <title>"
+    die "USAGE: scripts/new-content.sh note [<devlog slug>] | devlog <title> | essay <title>"
   fi
 }
 
@@ -33,6 +35,29 @@ function create_note {
     "---" \
     "date: $(date '+%Y-%m-%d %H:%M %z')" \
     "$(if [[ -n "${devlog_slug}" ]]; then printf 'devlog: %s' "${devlog_slug}"; fi)" \
+    "tags: []" \
+    "---"
+
+  open_in_editor "${file}"
+}
+
+function create_devlog {
+  if [[ "${#}" -ne 1 || -z "${1}" ]]; then
+    die "USAGE: scripts/new-content.sh devlog <title>"
+  fi
+
+  local title="${1}"
+  local current_date
+  local file
+
+  current_date=$(date +%Y-%m-%d)
+  file="${ROOT_DIR}/_devlogs/${current_date}-$(slugify "${title}").md"
+
+  write_file "${file}" \
+    "---" \
+    "date: $(date '+%Y-%m-%d %H:%M %z')" \
+    "title: ${title}" \
+    "description: " \
     "tags: []" \
     "---"
 

@@ -27,7 +27,7 @@ Keep the site lightweight and maintainable. Prefer Jekyll, Liquid, Markdown, sem
 - `_posts_archived/`: Historical content that is retained but not part of the active publishing workflow.
 - `assets/css/`: Site stylesheets. `main.css` imports the individual CSS modules.
 - `index.markdown`, `essays.markdown`, `devlogs.markdown`, `profile.markdown`: Top-level pages and section indexes.
-- `scripts/new-content.sh`: Shell helper for creating dated notes and essays.
+- `scripts/new-content.sh`: Shell helper for creating dated notes, devlogs, and essays.
 - `Rakefile`: Shortcuts for serving and building the site.
 - `preact-components/`: Separate, excluded frontend experiments. Do not introduce dependencies here for ordinary site work.
 - `_site/`, `.jekyll-cache/`, and `.sass-cache/`: Generated files and caches; do not edit or commit them.
@@ -114,6 +114,7 @@ To create content with the helper:
 ```sh
 ./scripts/new-content.sh note
 ./scripts/new-content.sh note aoc-2025
+./scripts/new-content.sh devlog "Devlog title"
 ./scripts/new-content.sh essay "Essay title"
 ```
 
