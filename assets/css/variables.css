@@ -1,10 +1,13 @@
 :root {
   /* Colors */
   --color-bg: #f7f5ef;
+  --color-dark-bg: #dedede;
   --color-fg: #15161a;
   --color-border: #d8d5cc;
   --color-accent: #1647ff;
   --color-highlight: #c9ff2e;
+  --color-on-highlight: #15161a;
+  --color-syntax-alt: #e03131;
   --color-muted: #65666c;
 
   /* Fonts */
@@ -12,7 +15,7 @@
   --font-body: "Clash Grotesk", system-ui, -apple-system, sans-serif;
 
   /* Sizes */
-  --max-width: 1080px;
+  --max-width: 1000px;
   --content-padding: 48px;
 
   /* Font sizes */
@@ -42,11 +45,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #f7f5ef;
-    --color-fg: #15161a;
-    --color-border: #d8d5cc;
-    --color-accent: #1647ff;
+    --color-bg: #15161a;
+    --color-dark-bg: #1e1f24;
+    --color-fg: #f7f5ef;
+    --color-border: #2e2f35;
+    --color-accent: #4d74ff;
     --color-highlight: #c9ff2e;
-    --color-muted: #65666c;
+    --color-on-highlight: #15161a;
+    --color-syntax-alt: #ff6b6b;
+    --color-muted: #9a9ba3;
   }
 }

@@ -1,2 +1,15 @@
-/* main.css — kept for backwards compatibility (confetti.html) */
-/* New site styles are loaded via individual CSS files in head.html */
+@import url("/assets/css/variables.css");
+@import url("/assets/css/fonts.css");
+@import url("/assets/css/reset.css");
+@import url("/assets/css/base.css");
+@import url("/assets/css/header.css");
+@import url("/assets/css/footer.css");
+@import url("/assets/css/intro.css");
+@import url("/assets/css/stream.css");
+@import url("/assets/css/essay.css");
+@import url("/assets/css/code.css");
+@import url("/assets/css/essay-index.css");
+@import url("/assets/css/devlog.css");
+@import url("/assets/css/note.css");
+@import url("/assets/css/profile.css");
+@import url("/assets/css/responsive.css");

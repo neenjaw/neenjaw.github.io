@@ -1,0 +1,123 @@
+/* Centralized code blocks and syntax highlighting */
+
+:is(.essay-content, .note-content, .devlog-content) code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background-color: var(--color-border);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+:is(.essay-content, .note-content, .devlog-content) pre {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+  padding: var(--space-3xl);
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+:is(.essay-content, .note-content, .devlog-content) pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+}
+
+/* Syntax highlighting overrides (Rouge) */
+
+:is(.essay-content, .note-content, .devlog-content) .highlight {
+  background: transparent;
+  color: inherit;
+}
+
+:is(.essay-content, .note-content, .devlog-content) .highlight .hll {
+  background-color: var(--color-border);
+}
+
+:is(.essay-content, .note-content, .devlog-content)
+  .highlight
+  :is(.c, .cm, .c1, .cs) {
+  color: var(--color-muted);
+  font-style: italic;
+} /* Comment */
+
+:is(.essay-content, .note-content, .devlog-content)
+  .highlight
+  :is(.cp, .go, .gp, .nl, .w) {
+  color: var(--color-muted);
+} /* Comment.Preproc, Generic.Output, Generic.Prompt, Name.Label, Text.Whitespace */
+
+:is(.essay-content, .note-content, .devlog-content)
+  .highlight
+  :is(.err, .gd, .gr, .gt) {
+  color: var(--color-accent);
+} /* Error, Generic.Deleted, Generic.Error, Generic.Traceback */
+
+:is(.essay-content, .note-content, .devlog-content)
+  .highlight
+  :is(.k, .kc, .kd, .kn, .kr) {
+  color: var(--color-accent);
+  font-weight: 600;
+} /* Keyword */
+
+:is(.essay-content, .note-content, .devlog-content) .highlight :is(.kp, .kt) {
+  color: var(--color-accent);
+} /* Keyword.Pseudo, Keyword.Type */
+
+:is(.essay-content, .note-content, .devlog-content) .highlight .o {
+  color: var(--color-fg);
+} /* Operator */
+
+:is(.essay-content, .note-content, .devlog-content) .highlight .ge {
+  font-style: italic;
+} /* Generic.Emph */
+
+:is(.essay-content, .note-content, .devlog-content) .highlight :is(.gh, .gu) {
+  color: var(--color-fg);
+  font-weight: 600;
+} /* Generic.Heading, Generic.Subheading */
+
+:is(.essay-content, .note-content, .devlog-content) .highlight .gi {
+  color: var(--color-highlight);
+} /* Generic.Inserted */
+
+:is(.essay-content, .note-content, .devlog-content) .highlight .gs {
+  font-weight: 600;
+} /* Generic.Strong */
+
+:is(.essay-content, .note-content, .devlog-content)
+  .highlight
+  :is(.m, .mb, .mf, .mh, .mi, .mo, .il) {
+  color: var(--color-syntax-alt);
+} /* Literal.Number */
+
+:is(.essay-content, .note-content, .devlog-content)
+  .highlight
+  :is(.s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss) {
+  color: var(--color-syntax-alt);
+} /* Literal.String */
+
+:is(.essay-content, .note-content, .devlog-content) .highlight :is(.na, .no) {
+  color: var(--color-syntax-alt);
+} /* Name.Attribute, Name.Constant */
+
+:is(.essay-content, .note-content, .devlog-content)
+  .highlight
+  :is(.nb, .ni, .bp, .nv, .vc, .vg, .vi) {
+  color: var(--color-fg);
+} /* Name.Builtin, Name.Entity, Name.Builtin.Pseudo, Name.Variable */
+
+:is(.essay-content, .note-content, .devlog-content)
+  .highlight
+  :is(.nc, .nd, .ne, .nt, .ow) {
+  color: var(--color-accent);
+} /* Name.Class, Name.Decorator, Name.Exception, Name.Tag, Operator.Word */
+
+:is(.essay-content, .note-content, .devlog-content)
+  .highlight
+  :is(.nf, .nn, .nx, .py) {
+  color: var(--color-fg);
+} /* Name.Function, Name.Namespace, Name.Other, Name.Property */

@@ -35,6 +35,10 @@
   color: var(--color-fg);
 }
 
+.profile-content strong {
+  letter-spacing: 0.01em;
+}
+
 .profile-content > * + * {
   margin-top: 20px;
 }

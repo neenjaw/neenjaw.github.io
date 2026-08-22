@@ -1,5 +1,5 @@
 body {
-  background-color: var(--color-bg);
+  background-color: var(--color-dark-bg);
   color: var(--color-fg);
   line-height: 1.5;
   min-height: 100vh;
@@ -7,7 +7,12 @@ body {
   flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-body);
 }
 
@@ -24,8 +29,11 @@ a {
 }
 
 .page-content {
+  background-color: var(--color-bg);
   flex: 1;
-  width: 100%;
+  width: min(100%, var(--max-width));
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 /* Monospace text utility */

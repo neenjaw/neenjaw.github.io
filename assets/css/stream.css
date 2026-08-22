@@ -160,8 +160,12 @@
   font-size: var(--text-xs);
   letter-spacing: 0.15px;
   line-height: 1em;
-  color: var(--color-fg);
+  color: var(--color-on-highlight);
   white-space: pre;
+}
+
+.devlog-badge svg {
+  color: var(--color-on-highlight);
 }
 
 /* Stream footer link */
