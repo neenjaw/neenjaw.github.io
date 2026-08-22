@@ -1,0 +1,194 @@
+.stream {
+  max-width: var(--max-width);
+  width: 100%;
+  padding: 0 var(--content-padding) var(--space-7xl);
+  display: flex;
+  flex-flow: column;
+}
+
+/* Stream heading */
+.stream-heading {
+  border-bottom: 1px solid var(--color-fg);
+  padding: 0 0 var(--space-lg);
+  display: flex;
+  flex-flow: row;
+  place-content: center space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.stream-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  letter-spacing: 0.4px;
+  line-height: 1em;
+  color: var(--color-fg);
+  white-space: pre;
+}
+
+.stream-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  letter-spacing: 0.4px;
+  line-height: 1em;
+  color: var(--color-muted);
+  white-space: pre;
+}
+
+/* Stream items */
+.stream-items {
+  display: flex;
+  flex-flow: column;
+}
+
+/* Note stream item */
+.stream-item--note {
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-2xl) 0;
+  display: flex;
+  flex-flow: row;
+  gap: 28px;
+  width: 100%;
+}
+
+.stream-item-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  letter-spacing: 0.2px;
+  line-height: 1.5em;
+  color: var(--color-muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+  flex: 0 0 auto;
+  width: 150px;
+}
+
+.stream-item-content {
+  flex: 1 0 0;
+  display: flex;
+  flex-flow: column;
+  gap: 12px;
+}
+
+.stream-item-body {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.55em;
+  color: var(--color-fg);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Essay stream item */
+.stream-item--essay {
+  background-color: var(--color-accent);
+  width: 100%;
+  padding: var(--space-3xl);
+  display: flex;
+  flex-flow: column;
+  gap: 22px;
+}
+
+.stream-item--essay .stream-item-meta {
+  display: flex;
+  flex-flow: row;
+  place-content: center space-between;
+  align-items: center;
+  width: 100%;
+  color: #fff;
+}
+
+.stream-item--essay .stream-item-kind {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.25px;
+  line-height: 1em;
+  white-space: pre;
+}
+
+.stream-item--essay .stream-item-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.stream-item--essay .stream-item-title {
+  font-family: var(--font-body);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.8px;
+  line-height: 1.08em;
+  color: #fff;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.stream-item--essay .stream-item-excerpt {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: 1.5em;
+  color: #fff;
+  max-width: 680px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  text-wrap: balance;
+}
+
+/* Devlog badge */
+.devlog-badge {
+  display: inline-flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--color-highlight);
+  border-radius: 999px;
+  padding: 6px 10px;
+  width: min-content;
+}
+
+.devlog-badge svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.devlog-badge-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15px;
+  line-height: 1em;
+  color: var(--color-on-highlight);
+  white-space: pre;
+}
+
+.devlog-badge svg {
+  color: var(--color-on-highlight);
+}
+
+/* Stream footer link */
+.stream-footer {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-2xl) 0;
+  width: min-content;
+}
+
+.stream-footer-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  letter-spacing: 0.3px;
+  line-height: 1em;
+  color: var(--color-accent);
+  white-space: pre;
+}
+
+.stream-footer svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-accent);
+}

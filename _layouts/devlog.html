@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<article class="devlog">
+  <header class="devlog-header">
+    <p class="devlog-meta">
+      <span>DEVLOG / </span>
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%b %-d, %Y" }}
+      </time>
+    </p>
+    <h1 class="devlog-title p-name">{{ page.title | escape }}</h1>
+    {%- if page.description -%}
+      <p class="devlog-description">{{ page.description | escape }}</p>
+    {%- endif -%}
+  </header>
+
+  <div class="devlog-content e-content">{{ content }}</div>
+
+  {%- assign devlog_slug = page.slug -%}
+  {%- assign related_notes = site.notes | where: "devlog", devlog_slug -%}
+  {%- if related_notes.size > 0 -%}
+    <div class="devlog-notes">
+      <h2>Notes in this thread</h2>
+      {%- for note in related_notes -%}
+        <div class="devlog-note">
+          <span class="devlog-note-date">{{ note.date | date: "%b %-d, %Y" }}</span>
+          <div class="devlog-note-content">{{ note.content }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
+
+{%- include back-home.html -%}

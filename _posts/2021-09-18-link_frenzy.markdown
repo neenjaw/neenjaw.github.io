@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: Fall Link Roundup
 date: 2021-09-18 10:55:01 -0600
 categories: links review roundup programming development

@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<section class="profile">
+  <header class="profile-header">
+    <h1 class="profile-title">About Me: Tim Austin</h1>
+  </header>
+
+  {%- if page.image -%}
+    <img class="profile-photo" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" />
+  {%- endif -%}
+
+  <div class="profile-content">
+    {{ content }}
+  </div>
+</section>

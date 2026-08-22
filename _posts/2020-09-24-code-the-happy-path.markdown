@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: "Coding the happy path"
 date: 2020-09-24 15:28:48 -0600
 categories: elixir genserver coding phoenix

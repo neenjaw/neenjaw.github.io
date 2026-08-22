@@ -1,0 +1,22 @@
+---
+title: Long overdue update, now running on preact!
+date: 2025-04-13 22:47:45 -0600
+categories: preact update
+---
+
+It has been a long time since I made a (real) update to this page.
+There have been little things; moving to github from netlify, bumping jekyll, tidying some links.
+
+But now I have the website in better place to be using a vite-base preact build rather than the creating a production react build for my interactive widgets and "hacking" it to be served statically.
+That was so 2020.
+There is still some work to do, as the build is still done prior to commit rather than done by the github action which builds/serves the jekyll site.
+
+I have a few ideas to write about in the next couple weeks, so I hope to share those soon.
+
+I am remiss that I haven't written on here more often or more consistently.
+Professional life has taught me again over the last few months that developing a personal habit of writing is profoundly powerful.
+Ideas that are transient when spoken, become facts that must be reconciled.
+
+Here's to kicking this habit off again.
+
+-T

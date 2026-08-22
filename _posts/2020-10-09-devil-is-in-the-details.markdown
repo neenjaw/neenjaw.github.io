@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: '"The Devil is in the Details"'
 date: 2020-10-09 22:48:09 -0600
 categories: react canvas javascript typescript exercism

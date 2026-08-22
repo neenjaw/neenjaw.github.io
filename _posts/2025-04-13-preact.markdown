@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: Long overdue update, now running on preact!
 date: 2025-04-13 22:47:45 -0600
 categories: preact update

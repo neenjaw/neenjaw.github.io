@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: "Code Journal - Aug 01"
 date: 2020-08-01 00:00:00 -0600
 categories: coding

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: "Website Overhaul!"
 date: 2018-03-03 00:00:00 -0600
 categories: coding

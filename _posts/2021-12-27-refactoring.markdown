@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: Refactoring
 subtitle: Giving names to patterns
 date: 2021-12-27 11:46:28 -0600

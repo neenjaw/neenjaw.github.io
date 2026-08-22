@@ -1,0 +1,7 @@
+<div class="stream-item--note">
+  <span class="stream-item-date">{{ item.date | date: "%b %-d, %Y" }}</span>
+  <div class="stream-item-content">
+    <div class="stream-item-body">{{ item.content | strip_html | truncatewords: 50 }}</div>
+    {%- include devlog-badge.html item=item -%}
+  </div>
+</div>

@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<article class="essay">
+  <header class="essay-header">
+    <p class="essay-meta">
+      <span>ESSAY / </span>
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%b %-d, %Y" }}
+      </time>
+      {%- if page.author %}
+        <span> · {{ page.author }}</span>
+      {%- endif -%}
+    </p>
+    <h1 class="essay-title p-name">{{ page.title | escape }}</h1>
+    {%- if page.subtitle -%}
+      <p class="essay-subtitle">{{ page.subtitle | escape }}</p>
+    {%- endif -%}
+  </header>
+
+  <div class="essay-content e-content">{{ content }}</div>
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
+
+{%- if page.previous.url or page.next.url -%}
+  <nav class="page-navigation">
+    {%- if page.previous.url %}
+      <a class="prev" href="{{ page.previous.url | relative_url }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12 L5 12" />
+          <path d="M5 12 L12 5" />
+          <path d="M5 12 L12 19" />
+        </svg>
+        <span>{{ page.previous.title | escape }}</span>
+      </a>
+    {%- endif -%}
+    {%- if page.next.url %}
+      <a class="next" href="{{ page.next.url | relative_url }}">
+        <span>{{ page.next.title | escape }}</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12 L19 12" />
+          <path d="M19 12 L12 5" />
+          <path d="M19 12 L12 19" />
+        </svg>
+      </a>
+    {%- endif -%}
+  </nav>
+{%- endif -%}
+
+{%- include back-home.html -%}

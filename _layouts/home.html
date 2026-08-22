@@ -2,46 +2,51 @@
 layout: default
 ---
 
-<div class="home">
-  {%- if site.posts.size > 0 -%}
-  {% assign post = site.posts.first %}
+<section class="intro">
+  <p class="intro-kicker">PERSONAL WEBSITE / LOG 001</p>
+  <h1 class="intro-title">Notes from the workbench.</h1>
+  <p class="intro-copy">
+    I'm Tim Austin — a developer documenting decisions, experiments, and the
+    occasional longer argument about software.
+  </p>
 
-  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
-    <header class="post-header">
-      <h1 class="post-title p-name" itemprop="name headline">{{ post.title | escape }}</h1>
-      <h2 class="post-sub-title p-name" itemprop="name headline">{{ post.subtitle | escape }}</h2>
-      <p class="post-meta">
-        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-          {{ post.date | date: date_format }}
-        </time>
-        {%- if post.author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card"
-            itemprop="name">{{ post.author }}</span></span>
-        {%- endif -%}</p>
-    </header>
-
-    <div class="post-content e-content" itemprop="articleBody">
-      {{ post.content }}
+  <div class="publishing-legend">
+    <div class="legend-item">
+      <span class="legend-marker legend-marker--note"></span>
+      <span class="legend-label">NOTES / IN PROGRESS</span>
     </div>
+    <div class="legend-item">
+      <span class="legend-marker legend-marker--essay"></span>
+      <span class="legend-label">ESSAYS / CONSIDERED</span>
+    </div>
+  </div>
+</section>
 
-    {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-    {%- endif -%}
+{%- assign stream_limit = 4 -%}
+{%- assign stream_total = site.notes.size | plus: site.essays.size -%}
+{%- assign stream_end = stream_limit -%}
+{%- if stream_total < stream_end -%}
+  {%- assign stream_end = stream_total -%}
+{%- endif -%}
 
-    <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-  </article>
-
-  <div class="PageNavigation">
-    {% if post.previous.url %}
-    <a class="prev" href="{{post.previous.url}}">&laquo; {{post.previous.title}}</a>
-    {% endif %}
-    {% if post.next.url %}
-    <a class="next" href="{{post.next.url}}">{{post.next.title}} &raquo;</a>
-    {% endif %}
+<section class="stream">
+  <div class="stream-heading">
+    <span class="stream-label">LATEST</span>
+    <span class="stream-count">01—{% if stream_end < 10 %}0{% endif %}{{ stream_end }} OF {{ stream_total }}</span>
   </div>
 
-  {%- endif -%}
+  <div class="stream-items">
+    {%- assign all_items = "" | split: "" -%} {%- for note in site.notes -%} {%-
+    assign note_data = note | split: "|||" -%} {%- assign all_items = all_items
+    | push: note -%} {%- endfor -%} {%- for essay in site.essays -%} {%- assign
+    all_items = all_items | push: essay -%} {%- endfor -%} {%- assign
+    sorted_items = all_items | sort: "date" | reverse -%} {%- assign
+    display_count = 0 -%} {%- for item in sorted_items -%} {%- if display_count
+    >= stream_limit -%}{%- break -%}{%- endif -%} {%- if item.collection == "notes" -%} {%-
+    include stream-item-note.html item=item -%} {%- assign display_count =
+    display_count | plus: 1 -%} {%- elsif item.collection == "essays" -%} {%-
+    include stream-item-essay.html item=item -%} {%- assign display_count =
+    display_count | plus: 1 -%} {%- endif -%} {%- endfor -%}
+  </div>
 
-</div>
+</section>

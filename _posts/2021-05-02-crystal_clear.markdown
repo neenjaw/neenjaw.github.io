@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: Seeing Crystal Clear
 date: 2021-05-02 19:04:49 -0600
 categories: programming crystal type-inference strong-typing exercism

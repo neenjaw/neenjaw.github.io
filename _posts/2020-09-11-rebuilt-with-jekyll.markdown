@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: "neenjaw.com: Rebuilt with Jekyll"
 date: 2020-09-11 10:56:11 -0600
 categories: ruby jekyll liquid reboot react blog

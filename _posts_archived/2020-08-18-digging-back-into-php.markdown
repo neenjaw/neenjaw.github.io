@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: "Digging back into PHP"
 date: 2020-08-18 00:00:00 -0600
 categories: coding

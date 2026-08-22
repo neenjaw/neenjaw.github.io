@@ -1,0 +1,12 @@
+{%- if include.item.devlog -%}
+  {%- assign devlog = site.devlogs | where: "slug", include.item.devlog | first -%}
+  {%- if devlog -%}
+    <a class="devlog-badge" href="{{ devlog.url | relative_url }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+        <path d="M7 17 L17 7"/>
+        <path d="M7 7 L17 7 L17 17"/>
+      </svg>
+      <span class="devlog-badge-text">DEVLOG / {{ devlog.title | escape | upcase }}</span>
+    </a>
+  {%- endif -%}
+{%- endif -%}

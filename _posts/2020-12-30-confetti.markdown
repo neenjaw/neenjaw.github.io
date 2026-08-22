@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: essay
 title: Simulations, Canvas, Confetti!
 date: 2020-12-30 19:42:55 -0600
 categories: react typescript legacy_code

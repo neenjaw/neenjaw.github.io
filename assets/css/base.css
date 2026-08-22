@@ -1,0 +1,79 @@
+body {
+  background-color: var(--color-dark-bg);
+  color: var(--color-fg);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-body);
+}
+
+a {
+  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.container {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-bg);
+  flex: 1;
+  width: min(100%, var(--max-width));
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.page-home-link {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-4xl) var(--content-padding) var(--space-2xl);
+  width: min-content;
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  letter-spacing: 0.3px;
+  line-height: 1em;
+  color: var(--color-accent);
+  white-space: pre;
+}
+
+.page-home-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Monospace text utility */
+.text-mono {
+  font-family: var(--font-mono);
+}
+
+/* Body text utility */
+.text-body {
+  font-family: var(--font-body);
+}
+
+/* Muted text utility */
+.text-muted {
+  color: var(--color-muted);
+}
+
+/* Accent text utility */
+.text-accent {
+  color: var(--color-accent);
+}
