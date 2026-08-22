@@ -2,6 +2,8 @@
   /* Colors */
   --color-bg: #f7f5ef;
   --color-dark-bg: #dedede;
+  --color-panel-bg: #ebe9e3;
+  --color-panel-muted: #4a4b50;
   --color-wireframe: #c4c4c4;
   --color-fg: #15161a;
   --color-border: #d8d5cc;
@@ -48,6 +50,8 @@
   :root {
     --color-bg: #15161a;
     --color-dark-bg: #1e1f24;
+    --color-panel-bg: #272930;
+    --color-panel-muted: #c4c5cc;
     --color-wireframe: #121318;
     --color-fg: #f7f5ef;
     --color-border: #2e2f35;

@@ -66,11 +66,16 @@
     let mouseY = 0;
     let mouseXSmooth = 0;
     let mouseYSmooth = 0;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
-    window.addEventListener("pointermove", (event) => {
-      mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-      mouseY = (event.clientY / window.innerHeight) * 2 - 1;
-    });
+    if (!prefersReducedMotion) {
+      window.addEventListener("pointermove", (event) => {
+        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        mouseY = (event.clientY / window.innerHeight) * 2 - 1;
+      });
+    }
 
     function displace() {
       const position = geometry.attributes.position;
@@ -107,6 +112,11 @@
       shape.rotation.y = t * 0.8;
       renderer.render(scene, camera);
     }
-    animate();
+
+    if (prefersReducedMotion) {
+      renderer.render(scene, camera);
+    } else {
+      animate();
+    }
   })();
 </script>
