@@ -2,6 +2,7 @@
   /* Colors */
   --color-bg: #f7f5ef;
   --color-dark-bg: #dedede;
+  --color-wireframe: #c4c4c4;
   --color-fg: #15161a;
   --color-border: #d8d5cc;
   --color-accent: #1647ff;
@@ -47,6 +48,7 @@
   :root {
     --color-bg: #15161a;
     --color-dark-bg: #1e1f24;
+    --color-wireframe: #121318;
     --color-fg: #f7f5ef;
     --color-border: #2e2f35;
     --color-accent: #4d74ff;
